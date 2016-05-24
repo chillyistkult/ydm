@@ -1,0 +1,35 @@
+.bg-access {
+  background: url('../assets/images/bg.access.svg');
+  background-size: cover;
+}
+
+.gradient-primary {
+  background-image: -webkit-linear-gradient(top, darken(@brand-primary, 20%), @brand-primary);
+  background-image: linear-gradient(to bottom, darken(@brand-primary, 20%), @brand-primary);
+  background-color: @brand-primary;
+  h1, h2, h3, h4, h5 {
+    color: #FFF;
+  }
+}
+
+.access {
+  .panel {
+    margin: 0 auto;
+    width: 500px;
+    h1, h2, h3, h4, h5 {
+      color: @brand-primary;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .access .panel {
+    padding: 15px;
+    margin-bottom: 0;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+}

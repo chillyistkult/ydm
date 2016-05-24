@@ -1,0 +1,126 @@
+// Dashhead
+//
+// Custom header for the top of dashboard pages.
+
+.dashhead {
+  .clearfix();
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.dashhead-titles {
+  @media (min-width: @screen-sm-min) {
+    float: left;
+  }
+}
+
+.dashhead-title {
+  line-height: 1.6;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.dashhead-subtitle {
+  min-height: 20px;
+  margin-top: 0;
+  margin-bottom: (@spacer-y * .25);
+  font-weight: normal;
+  font-size: 85%;
+  color: @dashhead-subtitle-color;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.dashhead-toolbar {
+  margin-left: 0;
+
+  .input-with-icon {
+    width: 100%;
+    margin-bottom: 10px;
+    margin-left: 0;
+  }
+
+  @media (min-width: @screen-sm-min) {
+    float: right;
+    //margin-top: 12px;
+
+    .input-with-icon {
+      width: 180px;
+      margin-bottom: 0;
+    }
+  }
+}
+
+.dashhead-toolbar-no-mt {
+  margin-left: 0;
+
+  .input-with-icon {
+    width: 100%;
+    margin-bottom: 10px;
+    margin-left: 0;
+  }
+
+  @media (min-width: @screen-sm-min) {
+    float: right;
+    margin-top: 0px;
+
+    .input-with-icon {
+      width: 240px;
+      margin-bottom: 0;
+    }
+  }
+}
+
+.dashhead-toolbar-divider {
+  float: left;
+  width: 1px;
+  height: 34px;
+  margin-left: 10px;
+  margin-right: 10px;
+  background-color: @dashhead-toolbar-divider-bg; // #eee;
+}
+
+.dashhead-toolbar-spacer {
+  float: left;
+  width: 1px;
+  height: 34px;
+  margin-left: 3px;
+  margin-right: 3px;
+}
+
+.dashhead-toolbar-item {
+  float: left;
+
+  @media (max-width: @screen-sm-min) {
+    &.btn-group-halves {
+      width: 100%;
+
+      .btn {
+        width: 50%;
+        margin-left: 0;
+      }
+    }
+
+    &.btn-group-thirds {
+      width: 100%;
+
+      .btn {
+        width: 33%;
+        margin-left: 0;
+
+        &:last-child {
+          width: 34%;
+        }
+      }
+    }
+
+    &.btn-group-fourths {
+      width: 100%;
+
+      .btn {
+        width: 25%;
+        margin-left: 0;
+      }
+    }
+  }
+}

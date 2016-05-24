@@ -1,0 +1,24 @@
+.messages {
+  opacity: 1;
+  width: 100%;
+  z-index: 1000;
+  .message {
+    text-align: center;
+  }
+  .message-dismiss {
+    padding: 5px;
+  }
+}
+
+.messages-fixed-top,
+.messages-fixed-bottom {
+  position: fixed;
+  right: 0;
+  left: 0;
+  z-index: 999;
+  margin-bottom: 0;
+}
+
+.messages-fixed-top {
+  top: @navbar-height;
+}

@@ -1,0 +1,5 @@
+{
+  "env": "development",
+  "api": "http://ydm-api.azurewebsites.net/api",
+  "version": "0.0.0"
+}

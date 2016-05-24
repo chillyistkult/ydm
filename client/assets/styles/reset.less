@@ -1,0 +1,231 @@
+:focus {
+  outline: 0;
+}
+
+.navbar-nav > .active > a {
+  font-weight: bold !important;
+}
+
+label, .label {
+  font-weight: 500;
+  font-size: 100%;
+  margin: 0;
+  border-radius: 0;
+}
+
+#content {
+  display: block;
+}
+
+#footer {
+  padding-top: 50px;
+}
+
+@media (min-width: 768px) {
+  .navbar-left {
+    float: left !important;
+  }
+
+  .navbar-right {
+    float: right !important;
+    margin-right: -6px;
+  }
+}
+
+@media (min-width: 768px) {
+  .dashhead-toolbar .input-with-icon {
+    width: 240px !important;
+    margin-bottom: 0;
+  }
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.form-control[readonly] {
+  background-color: @input-bg;
+  opacity: 1; // iOS fix for unreadable disabled content; see https://github.com/twbs/bootstrap/issues/11655
+}
+
+.has-feedback {
+  // Ensure icons don't overlap text
+  .form-control {
+    padding-right: (@input-height-base * 0.8);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  tr {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+  }
+
+  td,
+  th {
+    text-align: left !important;
+    display: block;
+    width: 33.333333333333%;
+  }
+
+  th:first-child,
+  td:first-child {
+    background: #efefef;
+    width: 100%;
+  }
+
+  th:first-child {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .row.vertical-align {
+    display: block;
+  }
+
+  .row .wrapper {
+    border: 0 !important;
+  }
+
+  [class*=col] {
+    border: 0;
+  }
+}
+
+.form-label {
+  color: darken(@gray-darker, 5%);
+  text-transform: uppercase;
+  padding: 0;
+  font-size: 80%;
+  letter-spacing: 0.5px;
+  margin-bottom: 5px;
+}
+
+.input-group-addon {
+  background-color: #EDEFED;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.tab-content {
+  border-right: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  border-left: 1px solid #ddd;
+}
+
+.fieldset-form {
+  fieldset {
+    padding: 20px;
+    border-radius: @border-radius-base;
+    border: 1px solid #ccc;
+    padding-top: 10px;
+  }
+  legend {
+    width: auto;
+    padding: 0px 10px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    line-height: inherit;
+    color: @brand-primary;
+    border: 0;
+    font-weight: 600;
+    border-bottom: none;
+  }
+}
+
+.navbar-nav > li > .dropdown-menu {
+  .border-top-radius(5px);
+}
+
+.dropdown-menu {
+  // Links within the dropdown menu
+  > li > a, span {
+    display: block;
+    padding: 3px 20px;
+    clear: both;
+    font-weight: normal;
+    line-height: @line-height-base;
+    color: @dropdown-link-color;
+    white-space: nowrap; // prevent links from randomly breaking onto new lines
+  }
+}
+
+.dropdown-menu-custom {
+  padding: 0;
+  min-width: 0;
+  border-radius: 5px;
+  top: 90%;
+
+  :before {
+    position: absolute;
+    top: -10px;
+    right: 9px;
+    display: inline-block;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid rgba(0, 0, 0, 0.05);
+    border-left: 10px solid transparent;
+    content: '';
+  }
+
+  :after {
+    position: absolute;
+    top: -9px;
+    right: 10px;
+    display: inline-block;
+    border-right: 9px solid transparent;
+    border-bottom: 9px solid #ffffff;
+    border-left: 9px solid transparent;
+    content: '';
+  }
+
+  > li > a, span {
+    padding: 10px 20px;
+  }
+
+  .divider {
+    margin: 0;
+  }
+}
+
+.alert {
+  a, a:hover {
+    color: #fff;
+    text-decoration: underline;
+
+  }
+}
+
+.row.b {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+#loading-bar .bar {
+  height: 5px;
+}
+
+.bg-success {
+  color: #fff;
+  .bg-variant(@state-success-bg);
+}

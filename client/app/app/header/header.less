@@ -1,0 +1,117 @@
+/* navbar */
+
+.app-navbar {
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+
+    .navbar-nav {
+        .user-name {
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+            max-width: 500px;
+            float: right;
+            padding-left: 0px;
+            @media screen and (max-width: @screen-lg) {
+                max-width: 240px;
+            }
+            @media screen and (max-width: @screen-md) {
+                max-width: 96px;
+            }
+        }
+    }
+
+    .navbar-nav > li button {
+        margin: 12px;
+    }
+
+    &.navbar-inverse {
+        background-color: @color-loggedin-navbar;
+        background-image: -webkit-radial-gradient(50% top, circle, darken(@brand-primary, 5%) 0%, rgba(84, 90, 182, 0) 75%), -webkit-radial-gradient(right top, circle, #794aa2 0%, rgba(121, 74, 162, 0) 57%);
+        background-image: radial-gradient(circle at 50% top, darken(@brand-primary, 5%) 0%, rgba(84, 90, 182, 0) 75%), radial-gradient(circle at right top, #794aa2 0%, rgba(121, 74, 162, 0) 57%);
+        background-repeat: no-repeat;
+        background-size: 100% 1000px;
+    }
+
+    .popover .popover-content {
+        padding: 0;
+    }
+
+    .avatar.avatar-no-img {
+        background-color: #fff;
+        color: #000;
+        border: 2px solid #fff;
+    }
+    .navbar-brand {
+        padding: 10px 15px;
+        img {
+            width: 95px;
+        }
+    }
+
+    .navbar-collapse {
+        max-height: inherit;
+    }
+    .navbar-collapse:after {
+        height: 100vh;
+    }
+    .form-control {
+        box-shadow: none;
+        border-color: #1C73A5;
+    }
+}
+
+.app-notifications {
+    margin-left: -12px;
+    padding-bottom: 10px !important;
+}
+
+.app-notifications .icon:before {
+    font-size: 20px;
+}
+
+@media (min-width: 768px) {
+    .app-navbar .navbar-collapse:after {
+        height: auto;
+    }
+}
+
+@media (min-width: @screen-sm) {
+    .logged-in-header {
+        .nav.navbar-nav > li > a {
+            padding: 10px 11px;
+        }
+    }
+}
+
+@media (min-width: @screen-xs) and (max-width: (@screen-sm - 1)) {
+    .logged-in-header {
+
+    }
+}
+
+
+@media (max-width: 768px) {
+    .app-search {
+        margin-top: -1px;
+    }
+}
+
+/* misc */
+.app-login-form {
+    max-width: 280px;
+    margin-top: -60px;
+}
+
+.app-new-msg {
+    margin-right: 10px;
+}
+
+.app-brand {
+    width: 40%;
+    display: inline-block;
+}
+
+.app-brand img {
+    width: 100%;
+}

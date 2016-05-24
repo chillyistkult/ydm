@@ -1,0 +1,44 @@
+//
+// flex table
+//
+
+
+.flextable {
+  display: table;
+  width: 100%;
+}
+
+.flextable-item {
+  display: table-cell;
+  width: 1%;
+  white-space: nowrap;
+  vertical-align: middle;
+
+  .btn-group {
+    font-size: 0; //Hack to remove white space for line endings
+    margin-left: 10px;
+
+    > .btn {
+      float: none;
+    }
+  }
+}
+
+.flextable-primary {
+  white-space: inherit;
+  width: 99%;
+}
+
+/* Portrait phones and smaller */
+@media (max-width: 480px) {
+  .flextable {
+    display: inline-block;
+  }
+
+  .flextable-item {
+    display: inline-block;
+    .btn-group {
+      margin: 0 0 11px 0;
+    }
+  }
+}

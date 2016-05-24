@@ -1,0 +1,45 @@
+<nav id="header" class="navbar navbar-inverse navbar-fixed-top app-navbar logged-in-header">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#navbar-collapse-main">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <a class="navbar-brand" href="/application/dashboard">
+                <img src=""/>
+            </a>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-collapse-main">
+
+            <ul class="nav navbar-nav hidden-xs">
+                <li ui-sref-active="active">
+                   <a ui-sref="app.dashboard">Dashboard</a>
+                </li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right m-r-0 hidden-xs">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                       aria-haspopup="true" aria-expanded="false">
+                        {{user.firstName}} {{user.lastName}}
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-custom text-center">
+                        <li><a ui-sref="access.logout">Abmelden</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <ul class="nav navbar-nav hidden-sm hidden-md hidden-lg">
+                <li ui-sref-active="active">
+                    <a href="#" ui-sref="app.dashboard">Dashboard</a>
+                </li>
+                <li><a href="#" ui-sref="access.logout">Abmelden</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
