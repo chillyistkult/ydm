@@ -88,7 +88,6 @@ angular.module('ydmApp', [
         $authProvider.signupUrl = '/auth/register';
     })
     .config(function ($analyticsProvider, CONFIG) {
-        debugger;
         $analyticsProvider.developerMode((CONFIG.env == 'development'));
     })
     .config(function ($urlMatcherFactoryProvider) {
@@ -122,14 +121,12 @@ angular.module('ydmApp', [
         'Message',
         'Restangular', function ($rootScope, $state, $filter, Auth, Message, RestangularProvider) {
             // Redirect to login if route requires auth and the user is not logged in
-            debugger;
             $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
-                debugger;
-
                 if (toState.redirectTo) {
                     event.preventDefault();
                     _.isObject(toState.redirectTo) ? $state.go(toState.redirectTo.name, toState.redirectTo.params) : $state.go(toState.redirectTo, toParams)
                 }
+                /*
                 if (toState.name === 'access.login') {
                     if (Auth.isAuthenticated()) {
                         event.preventDefault();
@@ -144,6 +141,7 @@ angular.module('ydmApp', [
                         return;
                     }
                 }
+                */
             });
 
             $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {

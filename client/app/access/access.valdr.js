@@ -11,12 +11,7 @@ angular.module('ydmApp')
         valdrProvider.addValidator('sameValidator');
         valdrProvider.addConstraints({
             'Login': {
-                'firstName': {
-                    'required': {
-                        'message': 'Pflichtfeld'
-                    },
-                },
-                'lastName': {
+                'username': {
                     'required': {
                         'message': 'Pflichtfeld'
                     },
@@ -33,10 +28,12 @@ angular.module('ydmApp')
                     'required': {
                         'message': 'Pflichtfeld'
                     },
+                    /*
                     'pattern': {
                         'value': /^(?=.*\d).{6,}$/,
                         'message': 'Passwort muss mindestens sechs Zeichen lang und eine Zahl enthalten'
                     }
+                    */
                 },
                 'passwordConfirm': {
                     'required': {

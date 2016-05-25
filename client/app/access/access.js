@@ -5,7 +5,7 @@ angular.module('ydmApp')
         $stateProvider
             .state('access', {
                 abstract: true,
-                template: '<div class="fullscreen gradient-primary"><messages></messages><div ui-view class="fade-in-right-big smooth"></div></div>',
+                templateUrl: 'app/access/access.html',
                 controller: 'AccessCtrl',
                 data: {
                     authenticate: false
@@ -13,14 +13,8 @@ angular.module('ydmApp')
             })
             .state('access.login', {
                 url: '/login',
-                params: {referrer: null},
                 templateUrl: 'app/access/login/login.html',
-                controller: 'LoginCtrl',
-                resolve: {
-                    referrer: function ($stateParams, $state) {
-                        return $stateParams.referrer || $state.current.referrer || 'app.dashboard';
-                    }
-                }
+                controller: 'LoginCtrl'
             })
     })
     .run(function ($rootScope) {
