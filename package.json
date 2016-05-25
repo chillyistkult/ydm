@@ -103,6 +103,7 @@
   "scripts": {
     "start": "node dist/server",
     "test": "grunt test",
+    "postinstall": "bower install && if $LIVE_ENV; then grunt build:production; else grunt build:development; fi",
     "update-webdriver": "node node_modules/grunt-protractor-runner/node_modules/protractor/bin/webdriver-manager update"
   },
   "private": true
