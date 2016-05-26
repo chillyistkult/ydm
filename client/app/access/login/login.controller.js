@@ -6,13 +6,8 @@ angular.module('ydmApp')
         $scope.user = {};
 
         $scope.login = function (user, form) {
-            debugger;
             if (form.$valid) {
-
-                Auth.login({
-                    _username: user.username,
-                    _password: user.password
-                })
+                Auth.login(user)
                     .then(function (user) {
                         // Logged in, redirect to home
                         $state.go('app.dashboard');

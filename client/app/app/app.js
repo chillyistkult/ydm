@@ -22,10 +22,12 @@ angular.module('ydmApp')
                 },
                 resolve: {
                     user: function (Auth) {
-                        debugger;
+                        /*
                         return Auth.getCurrentUser().then(function (user) {
                             return user;
                         });
+                        */
+                        return null;
                     },
                 },
             })

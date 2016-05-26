@@ -1,5 +1,5 @@
 {
   "env": "development",
-  "api": "http://locahost/api",
+  "api": "http://ydm.app/api",
   "version": "0.0.0"
 }
