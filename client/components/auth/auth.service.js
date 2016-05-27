@@ -6,7 +6,7 @@ angular.module('ydmApp')
             login: function (user) {
                 return $auth.login(user)
                     .then(function (res) {
-                        return User.get($auth.getPayload().id);
+                        return $auth.getPayload();
                     })
                     .catch(function (err) {
                         globalAuth.logout();
@@ -20,11 +20,11 @@ angular.module('ydmApp')
             isAuthenticated: function () {
                 return $auth.isAuthenticated();
             },
-            getPayload: function() {
+            getPayload: function () {
                 return $auth.getPayload();
             },
             getCurrentUser: function () {
-                return User.get();
+                return $auth.getPayload();
             },
         }
         return globalAuth;

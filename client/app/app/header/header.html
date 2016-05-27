@@ -1,4 +1,4 @@
-<nav id="header" class="navbar navbar-inverse navbar-fixed-top app-navbar logged-in-header">
+<nav id="header" class="navbar navbar-inverse navbar-fixed-top app-navbar">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
@@ -10,7 +10,7 @@
             </button>
 
             <a class="navbar-brand" href="/application/dashboard">
-                <img src=""/>
+                <img src="assets/images/logo/ydm.logo.header.png"/>
             </a>
         </div>
         <div class="navbar-collapse collapse" id="navbar-collapse-main">
@@ -19,13 +19,16 @@
                 <li ui-sref-active="active">
                    <a ui-sref="app.dashboard">Dashboard</a>
                 </li>
+                <li ui-sref-active="active">
+                    <a ui-sref="app.maintenance.filter">Data Maintenance</a>
+                </li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right m-r-0 hidden-xs">
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                        aria-haspopup="true" aria-expanded="false">
-                        {{user.firstName}} {{user.lastName}}
+                        {{user.username}}
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-custom text-center">
@@ -36,7 +39,10 @@
 
             <ul class="nav navbar-nav hidden-sm hidden-md hidden-lg">
                 <li ui-sref-active="active">
-                    <a href="#" ui-sref="app.dashboard">Dashboard</a>
+                    <a ui-sref="app.dashboard">Dashboard</a>
+                </li>
+                <li ui-sref-active="active">
+                    <a ui-sref="app.maintenance.filter">Data Maintenance</a>
                 </li>
                 <li><a href="#" ui-sref="access.logout">Abmelden</a></li>
             </ul>

@@ -4,7 +4,11 @@
   width: 100%;
   height: auto;
   position: fixed;
-  background: url(../assets/images/bg.pattern.svg) no-repeat center center fixed;
+  background-color: @color-loggedin-navbar;
+  background-image: -webkit-radial-gradient(50% top, circle, darken(@brand-primary, 5%) 0%, rgba(0, 79, 155, 0) 75%), -webkit-radial-gradient(right top, circle, #1274a5 0%, rgba(18, 116, 165, 0) 57%);
+  background-image: radial-gradient(circle at 50% top, darken(@brand-primary, 5%) 0%, rgba(0, 79, 155, 0) 75%), radial-gradient(circle at right top, #1274a5 0%, rgba(18, 116, 165, 0) 57%);
+  background-repeat: no-repeat;
+  background-size: 100% 1440px;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;

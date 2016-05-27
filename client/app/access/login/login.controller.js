@@ -9,11 +9,9 @@ angular.module('ydmApp')
             if (form.$valid) {
                 Auth.login(user)
                     .then(function (user) {
-                        // Logged in, redirect to home
                         $state.go('app.dashboard');
                     })
                     .catch(function (err) {
-                        // Something went wrong.
                     });
 
             }
