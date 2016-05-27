@@ -4,8 +4,6 @@
 
 .dashhead {
   .clearfix();
-  margin-top: 10px;
-  margin-bottom: 10px;
 }
 
 .dashhead-titles {
@@ -15,13 +13,10 @@
 }
 
 .dashhead-title {
-  line-height: 1.6;
   margin-top: 0;
-  margin-bottom: 0;
 }
 
 .dashhead-subtitle {
-  min-height: 20px;
   margin-top: 0;
   margin-bottom: (@spacer-y * .25);
   font-weight: normal;
@@ -42,30 +37,10 @@
 
   @media (min-width: @screen-sm-min) {
     float: right;
-    //margin-top: 12px;
+    margin-top: 12px;
 
     .input-with-icon {
       width: 180px;
-      margin-bottom: 0;
-    }
-  }
-}
-
-.dashhead-toolbar-no-mt {
-  margin-left: 0;
-
-  .input-with-icon {
-    width: 100%;
-    margin-bottom: 10px;
-    margin-left: 0;
-  }
-
-  @media (min-width: @screen-sm-min) {
-    float: right;
-    margin-top: 0px;
-
-    .input-with-icon {
-      width: 240px;
       margin-bottom: 0;
     }
   }
@@ -78,14 +53,6 @@
   margin-left: 10px;
   margin-right: 10px;
   background-color: @dashhead-toolbar-divider-bg; // #eee;
-}
-
-.dashhead-toolbar-spacer {
-  float: left;
-  width: 1px;
-  height: 34px;
-  margin-left: 3px;
-  margin-right: 3px;
 }
 
 .dashhead-toolbar-item {

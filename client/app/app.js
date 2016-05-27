@@ -126,7 +126,6 @@ angular.module('ydmApp', [
                     event.preventDefault();
                     _.isObject(toState.redirectTo) ? $state.go(toState.redirectTo.name, toState.redirectTo.params) : $state.go(toState.redirectTo, toParams)
                 }
-                /*
                 if (toState.name === 'access.login') {
                     if (Auth.isAuthenticated()) {
                         event.preventDefault();
@@ -141,7 +140,6 @@ angular.module('ydmApp', [
                         return;
                     }
                 }
-                */
             });
 
             $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
