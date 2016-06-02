@@ -14,7 +14,7 @@
                         </div>
                         <div class="col-sm-9">
                             <select class="form-control custom-select" ng-model="technology"
-                                    ng-options="technology.common_translate_word_id.description for technology in technologies">>
+                                    ng-options="technology.description for technology in technologies">>
                             </select>
                         </div>
                     </div>
@@ -23,8 +23,8 @@
                             <label class="control-label">Product line:</label>
                         </div>
                         <div class="col-sm-9">
-                            <select class="form-control custom-select" ng-model="technology"
-                                    ng-options="technology.common_translate_word_id.description for technology in technologies">>
+                            <select class="form-control custom-select" ng-model="productLine"
+                                    ng-options="productLine.translation.description group by productLine.product_line_group.description for productLine in productLines">
                             </select>
                         </div>
                     </div>

@@ -58,12 +58,5 @@ angular.module('ydmApp')
                         controller: 'FilterCtrl',
                     },
                 },
-                resolve: {
-                    technologies: function(Filter) {
-                        return Filter.getTechnologies().then(function(res) {
-                            return res.data;
-                        })
-                    }
-                }
             })
     });

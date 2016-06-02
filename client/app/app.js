@@ -112,6 +112,17 @@ angular.module('ydmApp', [
 
             RestangularProvider.setFullResponse(true);
             RestangularProvider.setDefaultHttpFields({cache: false});
+            /*
+            RestangularProvider.addResponseInterceptor(function(data, operation, what, url, response, deferred) {
+                var extractedData;
+                if (operation === "getList") {
+                    extractedData = data.data;
+                } else {
+                    extractedData = data;
+                }
+                return extractedData;
+            });
+            */
         }])
     .run([
         '$rootScope',
@@ -145,10 +156,6 @@ angular.module('ydmApp', [
             $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
                 $state.previous = fromState;
                 $state.previous.params = fromParams;
-            });
-
-            RestangularProvider.addResponseInterceptor(function (res, operation, what, url, response, deferred) {
-                return res;
             });
         }
     ])
