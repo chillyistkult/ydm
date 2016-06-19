@@ -1,0 +1,4 @@
+- displaySequence -1 = ausgeblendet
+- Technology + ProductLineGroup ODER ProductLine -> ProductGroup
+- Technology + ProdctLineGroup ergeben mehrere ProductGroups, bei Filter erstellen eine von denen auswählen
+- Filter kann einen ProductGroupFilter haben

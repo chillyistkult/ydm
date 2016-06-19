@@ -18,9 +18,21 @@ angular.module('ydmApp')
             })
         };
 
+        $scope.getFilters = function(tId, pId) {
+            Filter.getFilters(tId, pId).then(function(res) {
+                $scope.filters = res.data;
+            })
+        }
+
         $scope.$watchGroup(['technology'], function (newValue, oldValue) {
             if (!angular.equals(newValue, oldValue)) {
                 $scope.getProductLines($scope.technology.id);
+            }
+        });
+
+        $scope.$watchGroup(['productLine'], function (newValue, oldValue) {
+            if (!angular.equals(newValue, oldValue)) {
+                $scope.getFilters($scope.technology.id, $scope.productLine.id);
             }
         });
 

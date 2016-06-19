@@ -24,7 +24,7 @@
                         </div>
                         <div class="col-sm-9">
                             <select class="form-control custom-select" ng-model="productLine"
-                                    ng-options="productLine.translation.description group by productLine.product_line_group.description for productLine in productLines">
+                                    ng-options="productLine.description group by productLine.productLineGroup.description for productLine in productLines">
                             </select>
                         </div>
                     </div>
@@ -40,7 +40,43 @@
         </div>
     </div>
     <div class="panel-body">
-
+        <div class="row">
+            <div class="col-sm-6 m-t-sm m-b-sm" ng-repeat="filter in filters" ng-if="filter.group.id==1">
+                <div ng-switch="filter.type.id">
+                    <div ng-switch-when="1">
+                        <div class="checkbox custom-control custom-checkbox">
+                            <label>
+                                <input type="checkbox" ng-model="filter.isSelected">
+                                <span class="custom-control-indicator"></span>
+                                {{filter.name}}
+                            </label>
+                        </div>
+                    </div>
+                    <div ng-switch-when="2">
+                        <div class="form-horizontal">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="input-group">
+                                        <select class="form-control custom-select"
+                                                ng-model="filter.Property"
+                                                ng-options="property.name for property in filter.propertyGroupFilter.propertyGroup.properties">
+                                            <option value="" disabled selected style="display: none;">All</option>
+                                        </select>
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default" type="button"><i
+                                                class="glyphicon glyphicon-edit"></i></button>
+                                    </span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label class="control-label">{{filter.name}}</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <div class="panel panel-default">
@@ -50,6 +86,34 @@
         </div>
     </div>
     <div class="panel-body">
-
+        <div class="row">
+            <div class="col-sm-6 m-t-sm m-b-sm" ng-repeat="filter in filters" ng-if="filter.group.id==2">
+                <div ng-switch="filter.type.id">
+                    <div ng-switch-when="1">
+                        <div class="checkbox custom-control custom-checkbox">
+                            <label>
+                                <input type="checkbox" ng-model="filter.isSelected">
+                                <span class="custom-control-indicator"></span>
+                                {{filter.name}}
+                            </label>
+                        </div>
+                    </div>
+                    <div ng-switch-when="2">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label>{{filter.name}}:</label>
+                            </div>
+                            <div class="col-sm-6">
+                                <select class="form-control custom-select"
+                                        ng-model="filter.Property"
+                                        ng-options="property.name for property in filter.propertyGroupFilter.propertyGroup.properties">
+                                    <option value="" disabled selected style="display: none;">All</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
