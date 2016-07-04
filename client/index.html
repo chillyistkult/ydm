@@ -17,6 +17,7 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(client) app/vendor.css -->
     <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/ng-table/dist/ng-table.min.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css({.tmp,client}) app/app.css -->
@@ -31,7 +32,7 @@
     your browser</a> to improve your experience.</p>
 <![endif]-->
 <!-- Add your site or application content here -->
-<div data-ng-if="loading" class="loading"></div>
+<div data-ng-if="loading" data-ng-include="'components/loader/loader.html'"></div>
 <div class="app" ui-view>
 </div>
 
@@ -39,7 +40,6 @@
 <script src="bower_components/es5-shim/es5-shim.js"></script>
 <script src="bower_components/json3/lib/json3.min.js"></script>
 <![endif]-->
-<script src="https://sandbox.billwerk.com/selfService/billwerkjS"></script>
 <!-- build:js({client,node_modules}) app/vendor.js -->
 <!-- bower:js -->
 <script src="bower_components/angular/angular.js"></script>
@@ -66,6 +66,8 @@
 <script src="bower_components/angulartics/src/angulartics.js"></script>
 <script src="bower_components/angulartics-google-analytics/lib/angulartics-google-analytics.js"></script>
 <script src="bower_components/moment/moment.js"></script>
+<script src="bower_components/ng-table/dist/ng-table.min.js"></script>
+<script src="bower_components/angular-breadcrumb/release/angular-breadcrumb.js"></script>
 <!-- endbower -->
 <script src="socket.io-client/socket.io.js"></script>
 <!-- endbuild -->
@@ -79,16 +81,17 @@
 <script src="app/access/login/login.controller.js"></script>
 <script src="app/app/app.controller.js"></script>
 <script src="app/app/app.js"></script>
-<script src="app/app/dashboard/dashboard.controller.js"></script>
-<script src="app/app/maintenance/filter/filter.controller.js"></script>
-<script src="app/app/maintenance/filter/filter.service.js"></script>
-<script src="app/app/maintenance/maintenance.controller.js"></script>
+<script src="app/app/filter/filter.controller.js"></script>
+<script src="app/app/filter/property/models/models.controller.js"></script>
+<script src="app/app/filter/property/property.controller.js"></script>
+<script src="app/app/home/home.controller.js"></script>
 <script src="components/auth/auth.service.js"></script>
 <script src="components/auth/user.service.js"></script>
 <script src="components/loader/loader.directive.js"></script>
 <script src="components/message/message.directive.js"></script>
 <script src="components/message/message.service.js"></script>
 <script src="components/mongoose-error/mongoose-error.directive.js"></script>
+<script src="components/repository/repository.service.js"></script>
 <script src="components/socket/socket.service.js"></script>
 <script src="components/utilities/compile.directive.js"></script>
 <!-- endinjector -->

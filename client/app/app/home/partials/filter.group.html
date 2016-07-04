@@ -1,0 +1,37 @@
+<div ng-switch="filter.type.id">
+    <div ng-switch-when="1">
+        <div class="row" ng-class="{'greyed-out': filter.sequence == -1}">
+            <div class="col-sm-12">
+                <div class="checkbox custom-control custom-checkbox">
+                    <label>
+                        <input type="checkbox" ng-model="filter.isSelected">
+                        <span class="custom-control-indicator"></span>
+                        {{filter.name}}
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div ng-switch-when="2">
+        <div class="form-horizontal">
+            <div class="row" ng-class="{'greyed-out': filter.sequence == -1}">
+                <div class="col-sm-6">
+                    <div class="input-group">
+                        <select class="form-control custom-select"
+                                ng-model="filter.Property"
+                                ng-options="property.name for property in filter.propertyGroupFilter.propertyGroup.properties">
+                            <option value="" disabled selected style="display: none;">All</option>
+                        </select>
+                         <span class="input-group-btn">
+                            <button class="btn btn-default" type="button" ui-sref="app.filter({fId: filter.id})"><i
+                                    class="glyphicon glyphicon-edit"></i></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <label class="control-label">{{filter.name}}:</label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

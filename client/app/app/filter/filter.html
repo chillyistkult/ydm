@@ -1,0 +1,100 @@
+<div class="container">
+    <div class="dashhead m-b-sm">
+        <div class="dashhead-titles">
+            <h6 class="dashhead-subtitle"></h6>
+            <h3 ng-hide="isEdit" class="dashhead-title">{{::filter.name}}</h3>
+        </div>
+
+        <div class="dashhead-toolbar">
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="panel-title inline">
+                Meta
+            </div>
+            <div class="pull-right">
+                <a class="btn btn-sm btn-success" ng-click="save()" ng-disabled="metaForm.$pristine"><span class="glyphicon glyphicon-save"></span> Save</a>
+                <a class="btn btn-sm btn-default-outline" ng-click="reset()" ng-disabled="metaForm.$pristine"><span class="glyphicon glyphicon-refresh"></span> Reset</a>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="panel-body">
+            <form name="metaForm" novalidate class="form-horizontal">
+                <div class="form-group">
+                    <div class="col-sm-2">
+                        <label class="control-label">Name:</label>
+                    </div>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" ng-model="filter.name">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-2">
+                        <label class="control-label">Group:</label>
+                    </div>
+                    <div class="col-sm-4">
+                        <select class="form-control custom-select"
+                                ng-model="filter.group"
+                                ng-options="group as group.name for group in groups track by group.id">
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-2">
+                        <label class="control-label">Type:</label>
+                    </div>
+                    <div class="col-sm-4">
+                        <select class="form-control custom-select"
+                                ng-model="filter.type"
+                                ng-options="type as type.name for type in types track by type.id">
+                        </select>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="panel-title">
+                Properties
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table table-bordered table-striped table-condensed m-b-none">
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>min. Temperature</th>
+                            <th>max. Temperature</th>
+                            <th>min. Pressure</th>
+                            <th>max. Pressure</th>
+                            <th>Action</th>
+                        </tr>
+                        <tr ng-repeat="property in filter.propertyGroupFilter.propertyGroup.properties">
+                            <td>{{property.id}}</td>
+                            <td>{{property.name}}</td>
+                            <td>{{property.minTemperature || '-'}}</td>
+                            <td>{{property.maxTemperature || '-'}}</td>
+                            <td>{{property.minPressure || '-'}}</td>
+                            <td>{{property.maxPressure || '-'}}</td>
+                            <td>
+                                <div class="text-center">
+                                    <button type="button" class="btn btn-xs btn-default"
+                                            ui-sref="app.filter.property({pId: property.id})"><span
+                                            class="glyphicon glyphicon-edit"></span> Edit
+                                    </button>
+                                    <button type="button" class="btn btn-xs btn-danger-outline"><span
+                                            class="glyphicon glyphicon-trash"></span> Remove
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

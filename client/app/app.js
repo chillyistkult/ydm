@@ -16,10 +16,12 @@ angular.module('ydmApp', [
     'angular-jwt',
     'angular.filter',
     'satellizer',
-    'valdr'
+    'valdr',
+    'ngTable',
+    'ncy-angular-breadcrumb'
 ])
     .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
-        $urlRouterProvider.otherwise('/dashboard');
+        $urlRouterProvider.otherwise('/');
         $locationProvider.html5Mode(true);
         $httpProvider.interceptors.push('httpRequestInterceptor');
         $httpProvider.interceptors.push('loadingInterceptor');
@@ -93,6 +95,11 @@ angular.module('ydmApp', [
     .config(function ($urlMatcherFactoryProvider) {
         $urlMatcherFactoryProvider.strictMode(false)
     })
+    .config(function($breadcrumbProvider) {
+        $breadcrumbProvider.setOptions({
+            templateUrl: 'app/app/breadcrumb/template.html'
+        });
+    })
     .config(function ($provide) {
         $provide.decorator('$state', function ($delegate) {
             var originalTransitionTo = $delegate.transitionTo;
@@ -112,17 +119,18 @@ angular.module('ydmApp', [
 
             RestangularProvider.setFullResponse(true);
             RestangularProvider.setDefaultHttpFields({cache: false});
-            /*
+            //RestangularProvider.setPlainByDefault(false);
+
+
             RestangularProvider.addResponseInterceptor(function(data, operation, what, url, response, deferred) {
                 var extractedData;
                 if (operation === "getList") {
-                    extractedData = data.data;
+                    extractedData = data;
                 } else {
                     extractedData = data;
                 }
                 return extractedData;
             });
-            */
         }])
     .run([
         '$rootScope',
@@ -140,7 +148,7 @@ angular.module('ydmApp', [
                 if (toState.name === 'access.login') {
                     if (Auth.isAuthenticated()) {
                         event.preventDefault();
-                        $state.go('app.dashboard');
+                        $state.go('app.home');
                         return;
                     }
                 }

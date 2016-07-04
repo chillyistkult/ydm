@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="dashhead m-b-sm">
+        <div class="dashhead-titles">
+            <h6 class="dashhead-subtitle"></h6>
+            <h3 class="dashhead-title">{{property.name}}</h3>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="panel-title inline">
+                Models
+            </div>
+            <div class="pull-right">
+                <a class="btn btn-sm btn-success" ui-sref="app.filter.property.models"><span
+                        class="glyphicon glyphicon-plus"></span> Add</a>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <table ng-table="tableParams" class="table table-condensed table-bordered table-striped m-b-none">
+                        <tr ng-repeat="row in $data">
+                            <td data-title="'ID'" filter="{id: 'number'}" sortable="'id'">{{row.id}}</td>
+                            <td data-title="'Code'" filter="{code: 'text'}" sortable="'code'">{{row.code}}</td>
+                            <td data-title="'Name'" filter="{name: 'text'}" sortable="'name'">{{row.name}}</td>
+                            <td data-title="'Action'">
+                                <div class="text-center">
+                                    <button type="button" class="btn btn-xs btn-danger-outline"><span
+                                            class="glyphicon glyphicon-trash"></span> Remove
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

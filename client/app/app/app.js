@@ -16,6 +16,9 @@ angular.module('ydmApp')
                     'header@app': {
                         templateUrl: 'app/app/header/header.html',
                     },
+                    'breadcrumb@app': {
+                        templateUrl: 'app/app/breadcrumb/breadcrumb.html'
+                    },
                     'footer@app': {
                         templateUrl: 'app/app/footer/footer.html',
                     },
@@ -26,37 +29,99 @@ angular.module('ydmApp')
                     },
                 },
             })
-            .state('app.dashboard', {
-                url: '/dashboard',
+            .state('app.home', {
+                url: '/',
+                params: {
+                    tId: null,
+                    pId: null,
+                },
                 views: {
                     'content': {
-                        templateUrl: 'app/app/dashboard/dashboard.html',
-                        controller: 'DashboardCtrl',
+                        templateUrl: 'app/app/home/home.html',
+                        controller: 'HomeCtrl',
                     }
                 },
-            })
-            .state('app.maintenance', {
-                abstract: true,
-                url: '/maintenance',
-                heading: "Maintenance",
-                views: {
-                    'content': {
-                        templateUrl: 'app/app/maintenance/maintenance.html',
-                        controller: 'DashboardCtrl',
-                    },
-                    'sidebar@app.maintenance': {
-                        templateUrl: 'app/app/maintenance/sidebar/sidebar.html',
-                    },
+                ncyBreadcrumb: {
+                    label: 'Home'
                 },
             })
-            .state('app.maintenance.filter', {
-                url: '/filter',
-                heading: "Filter",
+            .state('app.filter', {
+                url: '/filters/{fId}',
                 views: {
-                    'content': {
-                        templateUrl: 'app/app/maintenance/filter/filter.html',
+                    'content@app': {
+                        templateUrl: 'app/app/filter/filter.html',
                         controller: 'FilterCtrl',
-                    },
+                    }
                 },
+                ncyBreadcrumb: {
+                    label: 'Filter'
+                },
+                resolve: {
+                    filter: function (Repository, $stateParams) {
+                        return Repository.getFilter($stateParams.fId).then(function (res) {
+                            return res.data.plain();
+                        })
+                    },
+                    types: function(Repository) {
+                        return Repository.getFilterTypes().then(function(res) {
+                            return res.data.plain();
+                        })
+                    },
+                    groups: function(Repository) {
+                        return Repository.getFilterGroups().then(function(res) {
+                            return res.data.plain();
+                        })
+                    },
+                }
+            })
+            .state('app.filter.property', {
+                url: '/property/{pId}',
+                views: {
+                    'content@app': {
+                        templateUrl: 'app/app/filter/property/property.html',
+                        controller: 'PropertyCtrl'
+                    }
+                },
+                ncyBreadcrumb: {
+                    label: 'Property'
+                },
+                resolve: {
+                    property: function (Repository, $stateParams) {
+                        return Repository.getFilterProperty($stateParams.pId).then(function (res) {
+                            return res.data.plain();
+                        })
+                    },
+                    propertyModels: function(Repository, filter, property) {
+                        return Repository.getFilterPropertyModels(filter.id, property.id).then(function(res) {
+                            return res.data.plain();
+                        })
+                    }
+
+                }
+            })
+            .state('app.filter.property.models', {
+                url: '/models/add',
+                views: {
+                    'content@app': {
+                        templateUrl: 'app/app/filter/property/models/models.html',
+                        controller: 'ModelsCtrl'
+                    }
+                },
+                ncyBreadcrumb: {
+                    label: 'Models'
+                },
+                resolve: {
+                    property: function (Repository, $stateParams) {
+                        return Repository.getFilterProperty($stateParams.pId).then(function (res) {
+                            return res.data.plain();
+                        })
+                    },
+                    models: function(Repository) {
+                        return Repository.getModels().then(function(res) {
+                            return res.data.plain();
+                        })
+                    }
+
+                }
             })
     });
