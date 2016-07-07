@@ -22,6 +22,19 @@
   -webkit-appearance: none;
   appearance: none;
 
+  &.custom-select-inverse {
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAKCAYAAACJxx+AAAAACXBIWXMAAAsTAAALEwEAmpwYAAAATUlEQVQYlZWPsRXAUAgCcSf2U/djqDQ/Pl4Si9DJXYGARVJKSu/CIYA6Z5HsER4QLsUCR1r6HwlJBSAX3vfIL6lJlr/pUpN8D5RUR5xcxOsnXHJFloIAAAAASUVORK5CYII=) no-repeat right @padding-base-horizontal center;
+    background-color: @custom-select-inverse-bg;
+    color: @custom-select-inverse-color;
+
+    &.form-control {
+      &:focus {
+        color: @custom-select-inverse-color;
+        background-color: @custom-select-inverse-bg;
+      }
+    }
+  }
+
   // Unfuck IE9 custom selects which otherwise display our custom arrows along
   // the default buttony-arrow doodad.
   background-image: none \9;

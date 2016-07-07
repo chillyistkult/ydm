@@ -13,18 +13,19 @@
 
 // Brand Colors
 @brand-primary: #1E328C;
-@brand-success: #49a942;
+@brand-secondary: #EB612A;
+@brand-success: #00DD00;
 @brand-info: #00a0af;
 @brand-warning: #FFEE00;
 @brand-danger: #ed1c24;
 
 // Gray Scale
 @gray-darker: #122a38;
-@gray-dark: #1e3948;
+@gray-dark: #404A51;
 @gray: #536570;
 @gray-light: #9b9b9b;
-@gray-lighter: #cccccc;
-@gray-lightest: #f5f8fa;
+@gray-lighter: #C3CED5;
+@gray-lightest: #F0F5F8;
 
 @color-footer: #293239;
 @color-loggedin-navbar: #004F9B;
@@ -47,7 +48,7 @@
 @state-danger-border: darken(spin(@state-danger-bg, -10), 5%);
 
 // Text
-@text-color: @gray-darker;
+@text-color: #000;
 @text-muted: @gray !important;
 @letter-spacing-base: 0.02em;
 
@@ -59,6 +60,12 @@
 @zindex-navbar: 1030;
 @zindex-sub-header: 1000;
 @zindex-container: 100;
+
+// panel
+@panel-default-heading-bg: @gray-lighter;
+@panel-default-text: @text-color;
+@panel-heading-padding: 5px 10px;
+@panel-bg: @gray-lightest;
 
 // popover
 @popover-fallback-border-color: @gray-lighter;
@@ -73,6 +80,9 @@
 @dropdown-padding: 10px 0;
 @dropdown-anchor-padding: 5px 20px;
 @dropdown-link-hover-bg: @gray-lightest;
+
+// Linking
+@link-color: @brand-secondary;
 
 // Spacing
 @spacer: 20px;
@@ -122,6 +132,11 @@
 @btn-border-radius-small: 0;
 
 @btn-toolbar-divider-bg: @gray-lighter;
+
+@btn-inverse-color: @gray-lightest;
+@btn-inverse-bg: @gray-dark;
+@btn-inverse-border: @gray-dark;
+
 
 //@btn-default-border: #ececec;
 //@btn-default-bg: @btn-default-border;
@@ -274,6 +289,9 @@
 @custom-select-color: @input-color;
 @custom-select-bg: @input-bg;
 @custom-select-disabled-bg: @input-bg-disabled;
+
+@custom-select-inverse-bg: @gray-dark;
+@custom-select-inverse-color: @gray-lightest;
 
 @custom-control-indicator-bg: @input-bg;
 @custom-control-indicator-border: rgba(0, 0, 0, .15);

@@ -18,6 +18,7 @@ angular.module('ydmApp', [
     'satellizer',
     'valdr',
     'ngTable',
+    'ngTableTemplates',
     'ncy-angular-breadcrumb'
 ])
     .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
@@ -95,7 +96,7 @@ angular.module('ydmApp', [
     .config(function ($urlMatcherFactoryProvider) {
         $urlMatcherFactoryProvider.strictMode(false)
     })
-    .config(function($breadcrumbProvider) {
+    .config(function ($breadcrumbProvider) {
         $breadcrumbProvider.setOptions({
             templateUrl: 'app/app/breadcrumb/template.html'
         });
@@ -122,7 +123,7 @@ angular.module('ydmApp', [
             //RestangularProvider.setPlainByDefault(false);
 
 
-            RestangularProvider.addResponseInterceptor(function(data, operation, what, url, response, deferred) {
+            RestangularProvider.addResponseInterceptor(function (data, operation, what, url, response, deferred) {
                 var extractedData;
                 if (operation === "getList") {
                     extractedData = data;
@@ -138,7 +139,8 @@ angular.module('ydmApp', [
         '$filter',
         'Auth',
         'Message',
-        'Restangular', function ($rootScope, $state, $filter, Auth, Message, RestangularProvider) {
+        'Restangular',
+        '$templateCache', function ($rootScope, $state, $filter, Auth, Message, RestangularProvider, $templateCache) {
             // Redirect to login if route requires auth and the user is not logged in
             $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
                 if (toState.redirectTo) {
@@ -165,6 +167,6 @@ angular.module('ydmApp', [
                 $state.previous = fromState;
                 $state.previous.params = fromParams;
             });
+
         }
-    ])
-;
+    ]);

@@ -1,0 +1,101 @@
+.btn-switch {
+  position: relative;
+  width: 70px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+
+  &.btn-switch-inverse {
+    label {
+      border-color: @btn-inverse-border;
+      background-color: @btn-inverse-bg;
+      &:hover {
+        &:before {
+          background: lighten(#80929B, 15%);
+          border-color: @btn-inverse-border;
+        }
+      }
+      &:before {
+        color: @btn-inverse-bg;
+        background: #80929B;
+        border-color: @btn-inverse-border;
+      }
+      &:after {
+        color: #80929B;
+      }
+    }
+
+    input[type=checkbox] {
+      &:checked {
+        & + label {
+          background-color: @btn-inverse-bg;
+          border-color: @btn-inverse-bg;
+          &:before {
+            border-color: @btn-inverse-border;
+          }
+          &:after {
+            color: @brand-success;
+            left: 10px;
+          }
+        }
+      }
+    }
+  }
+
+  input[type=checkbox] {
+    display: none;
+    &:checked {
+      & + label {
+        background-color: @brand-success;
+        border-color: @brand-success;
+        &:before {
+          border-color: @brand-success;
+          right: 0;
+        }
+        &:after {
+          color: #FFF;
+          content: "\e013";
+          left: 10px;
+        }
+      }
+    }
+  }
+
+  label {
+    display: block;
+    overflow: hidden;
+    cursor: pointer;
+    height: 30px;
+    padding: 0;
+    line-height: 30px;
+    border: 2px solid #CCCCCC;
+    background-color: #FFFFFF;
+    transition: background-color 0.3s ease-in;
+    &:before {
+      color: #CCCCCC;
+      content: "\e073";
+      font-family: "Glyphicons Halflings";
+      padding: 0 6px;
+      line-height: 1.6;
+      z-index: 10;
+      display: block;
+      width: 30px;
+      margin: 0;
+      background: #FFFFFF;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 40px;
+      border: 2px solid #CCCCCC;
+      transition: all 0.3s ease-in 0s;
+    }
+    &:after {
+      color: #CCCCCC;
+      content: "\e014";
+      font-family: "Glyphicons Halflings";
+      position: absolute;
+      right: 10px;
+      top: 0;
+    }
+  }
+}

@@ -80,6 +80,10 @@ angular.module('ydmApp')
                     'content@app': {
                         templateUrl: 'app/app/filter/property/property.html',
                         controller: 'PropertyCtrl'
+                    },
+                    'models@app.filter.property': {
+                        templateUrl: 'app/app/filter/property/models/list.html',
+                        controller: 'PropertyCtrl'
                     }
                 },
                 ncyBreadcrumb: {
@@ -100,15 +104,14 @@ angular.module('ydmApp')
                 }
             })
             .state('app.filter.property.models', {
-                url: '/models/add',
                 views: {
-                    'content@app': {
-                        templateUrl: 'app/app/filter/property/models/models.html',
-                        controller: 'ModelsCtrl'
+                    'models@app.filter.property': {
+                        templateUrl: 'app/app/filter/property/models/add.html',
+                        controller: 'ModelCtrl'
                     }
                 },
                 ncyBreadcrumb: {
-                    label: 'Models'
+                    skip: true
                 },
                 resolve: {
                     property: function (Repository, $stateParams) {

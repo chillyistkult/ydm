@@ -77,6 +77,17 @@ q:before, q:after {
   content: none;
 }
 
+input[type=number] {
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: inner-spin-button !important;
+  }
+
+  &.form-control {
+    padding: 6px 6px 6px 12px;
+  }
+}
+
 table {
   border-collapse: collapse;
   border-spacing: 0;

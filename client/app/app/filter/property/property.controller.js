@@ -2,8 +2,16 @@
 
 angular.module('ydmApp')
     .controller('PropertyCtrl', function ($scope, Repository, NgTableParams, property, propertyModels) {
-        $scope.property = property;
+        $scope.property = angular.copy(property);
         $scope.models = propertyModels;
+
+        $scope.save = function() {
+
+        };
+
+        $scope.reset = function() {
+            $scope.property = angular.copy(property);
+        }
 
         $scope.tableParams = new NgTableParams({
             page: 1, // show first page

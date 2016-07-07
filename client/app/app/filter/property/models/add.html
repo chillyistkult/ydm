@@ -1,0 +1,35 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="panel-title inline">
+            Add Models
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-12">
+                <table ng-table="tableParams" class="table table-condensed table-bordered table-striped m-b-none">
+                    <tr ng-repeat="row in $data">
+                        <td data-title="'Included'" filter="{isIncluded: 'boolean'}" sortable="'isIncluded'">
+                            <div class="checkbox custom-control custom-checkbox m-none">
+                                <label>
+                                    <input type="checkbox" ng-model="row.isIncluded">
+                                    <span class="custom-control-indicator"></span>
+                                </label>
+                            </div>
+                        </td>
+                        <td data-title="'ID'" filter="{id: 'number'}" sortable="'id'">{{row.id}}</td>
+                        <td data-title="'Code'" filter="{code: 'text'}" sortable="'code'">{{row.code}}</td>
+                        <td data-title="'Name'" filter="{name: 'text'}" sortable="'name'">{{row.name}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/ng-template" id="ng-table/filters/boolean.html">
+    <select class="form-control custom-select"
+            ng-disabled="$filterRow.disabled"
+            ng-model="params.filter()[name]"
+            ng-options="filter.value as filter.name for filter in [{name: 'All'}, {name: 'Yes', value: true}, {name: 'No', value: false}]">
+    </select>
+</script>

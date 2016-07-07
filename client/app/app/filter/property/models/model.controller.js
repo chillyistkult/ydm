@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('ydmApp')
-    .controller('ModelsCtrl', function ($scope, Repository, NgTableParams, models, propertyModels, property) {
+    .controller('ModelCtrl', function ($scope, Repository, NgTableParams, models, propertyModels, property) {
         $scope.property = property;
         $scope.propertyModels = propertyModels;
         $scope.models = models;
