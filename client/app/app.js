@@ -5,6 +5,7 @@ angular.module('ydmApp', [
     'ngSanitize',
     'ngAnimate',
     'ngStorage',
+    'ngMessages',
     'btford.socket-io',
     'ui.router',
     'ui.bootstrap',
