@@ -14,7 +14,7 @@
                 Meta
             </div>
             <div class="panel-toolbar">
-                <a class="panel-toolbar-item" ng-click="save()" ng-disabled="metaForm.$pristine"><span
+                <a class="panel-toolbar-item" ng-click="update(filter)" ng-disabled="metaForm.$pristine"><span
                         class="glyphicon glyphicon-floppy-disk"></span> Save</a>
                 <a class="panel-toolbar-item" ng-click="reset()" ng-disabled="metaForm.$pristine"><span
                         class="glyphicon glyphicon-refresh"></span> Reset</a>
@@ -81,13 +81,12 @@
                 <td>{{property.maxPressure || '-'}}</td>
                 <td>
                     <div class="text-center">
-                        <button type="button" class="btn btn-xs btn-default"
-                                ui-sref="app.filter.property({pId: property.id})"><span
-                                class="glyphicon glyphicon-edit"></span> Edit
-                        </button>
-                        <button type="button" class="btn btn-xs btn-danger-outline"><span
-                                class="glyphicon glyphicon-trash"></span> Remove
-                        </button>
+                        <a ui-sref="app.filter.property({pId: property.id})">
+                            <i class="glyphicon glyphicon-edit"></i>
+                        </a>
+                        <a>
+                            <i class="glyphicon glyphicon-trash"></i>
+                        </a>
                     </div>
                 </td>
             </tr>

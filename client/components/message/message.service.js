@@ -128,30 +128,6 @@ angular.module('ydmApp')
             };
         }])
     .constant('MESSAGES', {
-        100: 'Es wurde kein Token übergeben. Authentifizierung nicht möglich.',
-        101: "E-Mail Adresse und Passwort stimmen nicht überein",
-        102: "Du verfügst nicht über die notwendigen Rechte diese Seite aufzurufen",
-        103: "Die Eingabe konnte nicht verifiziert werden. Bitte wende dich an den Support",
-        104: "Bitte bestätige noch deine E-Mail Adresse bevor du dich anmeldest! <\a href='/resend'\>Keine E-Mail bekommen?<\/a\>",
-        105: "Dein Account wurde gelöscht. <\a href='/reactivate'\>Reaktivieren?<\/a\>",
-        106: "Du hast bereits eine Passwortänderung angefordert. Prüfe dein E-Mail Postfach.",
-        200: "Die angegebene Ressource konnte nicht gefunden werden",
-        201: "Domain hat falschen Status zum Markieren.",
-        202: "Status Übergang nicht erlaubt.",
-        300: "Du hast nicht ausreichend Punkte um das Gebot abzugeben",
-        301: "Das Maximalgebot wurde überschritten",
-        302: "Dein aktuelles Gebot für diese Domain ist gleich oder höher",
-        303: "Du hast bereits ein Abonnement abgeschlossen",
-        304: "Für diese Domain wurde bereits ein höheres Gebot abgegeben",
-        305: "Die Auktion ist bereits geschlossen",
-        306: "Du hast nicht die notwendigen Rechte, um auf Auktionen mit dieser TLD zu bieten",
-        307: "Du hast noch ein aktives Abonnement und musst dieses vorher <\a href='/application/settings/contract'\>kündigen.<\/a\>",
-        308: "Du bist bereits Höchstbietender.<\/a\>",
-        309: "Dein Account ist zurzeit gesperrt. Bitte wende dich an den Support",
-        310: "Zahlungsdaten müssen aktualisiert werden",
-        311: "Es existiert bereits ein Nutzer mit der angegebenen E-Mail Adresse. <\a href='/forgot_password'\>Passwort vergessen?<\/a\>",
-        312: "Das alte Passwort stimmt nicht überein",
-        400: "Die Domain darf nicht gelöscht werden",
-        401: "Du hast bereits einen Authcode für diese Domain generiert"
+       
     });
 ;

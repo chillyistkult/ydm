@@ -5,8 +5,8 @@
                 <div class="col-sm-6">
                     <div class="input-group pull-right" ng-init="filter.isSelected = false;">
                         <div class="btn-switch btn-switch-inverse m-t-xs">
-                            <input type="checkbox" ng-model="filter.isSelected" id="filterSwitch">
-                            <label for="filterSwitch"></label>
+                            <input type="checkbox" ng-model="filter.isSelected" id="switch-{{filter.id}}">
+                            <label for="switch-{{filter.id}}"></label>
                         </div>
                     </div>
                 </div>
@@ -33,7 +33,7 @@
                     </div>
                 </div>
                 <div class="col-sm-6">
-                    <label class="control-label">{{filter.name}}:</label>
+                    <label class="control-label">{{filter.name}}</label>
                 </div>
             </div>
         </div>

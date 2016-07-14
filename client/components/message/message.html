@@ -1,5 +1,5 @@
 <div data-ng-repeat="message in messages track by $index" class="animated fade-in">
-    <div class="alert m-n clickable" ng-click="dismiss(message.id)" style="padding: 16px;"
+    <div class="alert m-n clickable" ng-click="dismiss(message.id)" style="padding: 14px;"
          ng-class="{ 'alert-danger': message.type=='error' , 'alert-warning': message.type=='warn', 'alert-info ': message.type=='info', 'alert-success': message.type=='success'  }"
          role="alert">
         <div class="message container">
