@@ -5,10 +5,13 @@ angular.module('ydmApp')
         $stateProvider
             .state('error', {
                 abstract: true,
+                data: {
+                    authenticate: false
+                },
                 views: {
                     '': {
                         templateUrl: 'app/error/error.html',
-                        controller: 'ErrorCtrl',
+                        controller: 'ErrorCtrl'
                     },
                 }
             })
@@ -21,7 +24,7 @@ angular.module('ydmApp')
                 }
             })
             .state('error.20002', {
-                url: '/500/20002',
+                url: '/20002',
                 views: {
                     'content': {
                         templateUrl: 'app/error/20002.html'

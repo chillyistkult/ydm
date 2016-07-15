@@ -29,16 +29,15 @@ angular.module('ydmApp', [
         $httpProvider.interceptors.push('httpRequestInterceptor');
         $httpProvider.interceptors.push('loadingInterceptor');
     })
-    .factory('httpRequestInterceptor', function ($q, $state, $anchorScroll, Message) {
+    .factory('httpRequestInterceptor', function ($q, $location, $anchorScroll, Message) {
         return {
             'responseError': function (rejection) {
-                debugger;
                 if (rejection.status === 404) {
-                    $state.go('error.404');
+                    $location.path('/404');
                 }
                 if (rejection.status === 500) {
-                    if(rejection.code === 20002) {
-                        $state.go('error.20002');
+                    if(rejection.data.code === 20002) {
+                        $location.path('/20002');
                     }
                     //Message.logError(500);
                     //$location.path('/');
