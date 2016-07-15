@@ -25,6 +25,9 @@ angular.module('ydmApp')
                 getFilterProperty: function(id, params) {
                     return Restangular.one('filters/properties', id).get(params);
                 },
+                updateFilterProperty: function(id, data) {
+                    return Restangular.one('filters/properties', id).customPUT(data);
+                },
                 getFilterProperties: function(params) {
                     return Restangular.all('filters/properties').getList(params);
                 },

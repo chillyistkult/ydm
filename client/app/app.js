@@ -20,7 +20,8 @@ angular.module('ydmApp', [
     'valdr',
     'ngTable',
     'ngTableTemplates',
-    'ncy-angular-breadcrumb'
+    'ncy-angular-breadcrumb',
+    'ngDraggable'
 ])
     .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
         $urlRouterProvider.otherwise('/');
@@ -28,13 +29,17 @@ angular.module('ydmApp', [
         $httpProvider.interceptors.push('httpRequestInterceptor');
         $httpProvider.interceptors.push('loadingInterceptor');
     })
-    .factory('httpRequestInterceptor', function ($q, $location, $anchorScroll, Message) {
+    .factory('httpRequestInterceptor', function ($q, $state, $anchorScroll, Message) {
         return {
             'responseError': function (rejection) {
+                debugger;
                 if (rejection.status === 404) {
-                    $location.path('/404/');
+                    $state.go('error.404');
                 }
                 if (rejection.status === 500) {
+                    if(rejection.code === 20002) {
+                        $state.go('error.20002');
+                    }
                     //Message.logError(500);
                     //$location.path('/');
                 }

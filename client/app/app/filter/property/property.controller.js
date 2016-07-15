@@ -1,15 +1,23 @@
 'use strict';
 
 angular.module('ydmApp')
-    .controller('PropertyCtrl', function ($scope, Repository, NgTableParams, property, propertyModels) {
+    .controller('PropertyCtrl', function ($scope, $state, Repository, Message, NgTableParams, property, propertyModels) {
         $scope.property = angular.copy(property);
         $scope.models = propertyModels;
 
-        $scope.save = function() {
-
+        $scope.update = function (data) {
+            Repository.updateFilterProperty(data.id, data).then(function (res) {
+                $state.reload().then(function () {
+                    Message.logSuccess('Property successfully updated!');
+                });
+            });
         };
 
-        $scope.reset = function() {
+        $scope.reset = function (form) {
+            if (form) {
+                form.$setPristine();
+                form.$setUntouched();
+            }
             $scope.property = angular.copy(property);
         }
 
@@ -20,6 +28,6 @@ angular.module('ydmApp')
             filterOptions: {
                 filterDelay: 300
             },
-            dataset:  $scope.models
+            dataset: $scope.models
         });
     });

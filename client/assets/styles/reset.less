@@ -157,8 +157,17 @@ table {
   margin-bottom: 5px;
 }
 
-.input-group-addon {
-  background-color: #EDEFED;
+.input-group {
+  width: 100%;
+  .input-group-addon {
+    //background-color: #EDEFED;
+  }
+}
+
+.form-horizontal {
+  .form-control-feedback {
+    z-index: 5;
+  }
 }
 
 input[type=number]::-webkit-inner-spin-button,

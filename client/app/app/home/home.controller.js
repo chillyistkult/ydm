@@ -2,25 +2,22 @@
 
 angular.module('ydmApp')
     .controller('HomeCtrl', function ($scope, $rootScope, Repository) {
-        $rootScope.loading = true;
 
-        $scope.dragListeners = {
-            accept: function (sourceItemHandleScope, destSortableScope) {
-                return boolean
-            },//override to determine drag is allowed or not. default is true.
-            itemMoved: function (event) {
-            },
-            orderChanged: function (event) {
-            },
-            containment: '#board',//optional param.
-            clone: true, //optional param for clone feature.
-            allowDuplicates: false //optional param allows duplicates to be dropped.
-        };
+        // Index = Dropindex
+        // Obj = Dragged obj
+        $scope.onDropComplete = function (index, obj, event) {
+            if (obj) {
+                var destObj = $scope.filters[index];
+                var sourceIndex = $scope.filters.indexOf(obj);
+                $scope.filters[index] = obj;
+                $scope.filters[sourceIndex] = destObj;
+            }
+        }
 
         $scope.getTechnologies = function () {
             Repository.getTechnologies().then(function (res) {
                 $scope.technologies = res.data;
-                $scope.technology = res.data[0];
+                $scope.technology = res.data[1];
             })
         };
 
@@ -34,7 +31,24 @@ angular.module('ydmApp')
         $scope.getFilters = function (tId, pId) {
             Repository.getFilterByTechnologyAndProduct(tId, pId).then(function (res) {
                 $scope.filters = res.data;
+                $scope.layout = $scope.getLayout($scope.filters);
+                console.log($scope.layout);
             })
+        }
+
+        $scope.getLayout = function (filters) {
+            var isBoolean = 0;
+            angular.forEach(filters, function (filter) {
+                if (filter.type.id == 1) {
+                    isBoolean++;
+                }
+                else {
+                    if (isBoolean != 2) {
+                        isBoolean = 0;
+                    }
+                }
+            });
+            return isBoolean == 2 ? 2 : 1;
         }
 
         $scope.$watchGroup(['technology'], function (newValue, oldValue) {

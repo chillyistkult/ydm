@@ -7,52 +7,162 @@
     </div>
     <div class="panel panel-default">
         <div class="panel-heading">
-            <div class="panel-title">
-                Meta
+            <div class="flextable">
+                <div class="flextable-item flextable-primary">
+                    <div class="panel-title">
+                        Meta
+                    </div>
+                </div>
+                <div class="flextable-item">
+                    <div class="panel-toolbar">
+                        <a ng-click="metaForm.$valid && update(property)"
+                           ng-disabled="metaForm.$pristine"><span
+                                class="glyphicon glyphicon-save"></span>
+                            Save</a>
+                        <a ng-click="reset(metaForm)" ng-disabled="metaForm.$pristine"><span
+                                class="glyphicon glyphicon-refresh"></span>
+                            Reset</a>
+                    </div>
+                </div>
             </div>
-            <div class="panel-toolbar">
-                <a ng-click="save()" ng-disabled="metaForm.$pristine"><span class="glyphicon glyphicon-save"></span> Save</a>
-                <a ng-click="reset()" ng-disabled="metaForm.$pristine"><span class="glyphicon glyphicon-refresh"></span> Reset</a>
-            </div>
-            <div class="clearfix"></div>
         </div>
         <div class="panel-body">
             <form name="metaForm" novalidate class="form-horizontal">
-                <div class="form-group">
-                    <div class="col-sm-2">
-                        <label class="control-label">Name:</label>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group"
+                             ng-class="{ 'has-error has-feedback': metaForm.name.$dirty && metaForm.name.$invalid,
+                                 'has-success has-feedback': metaForm.name.$dirty && metaForm.name.$valid }">
+                            <div class="col-sm-4">
+                                <label class="control-label">Name:</label>
+                            </div>
+                            <div class="col-sm-8">
+                                <input type="text"
+                                       name="name"
+                                       class="form-control"
+                                       ng-model="property.name"
+                                       ng-minlength="1"
+                                       ng-maxlength="50"
+                                       required>
+
+                                <span ng-show="metaForm.name.$dirty && metaForm.name.$valid"
+                                      class="glyphicon glyphicon-ok form-control-feedback"></span>
+                                <span ng-show="metaForm.name.$dirty && metaForm.name.$invalid"
+                                      class="glyphicon glyphicon-remove form-control-feedback"></span>
+
+
+                                <div class="help-block"
+                                     ng-messages="metaForm.name.$error"
+                                     ng-show="metaForm.name.$dirty && metaForm.name.$invalid">
+                                    <div ng-messages-include="components/form/validation.html"></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-sm-4">
-                        <input type="text" class="form-control" ng-model="property.name">
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <div class="col-sm-4">
+                                <label class="control-label">Display sequence:</label>
+                            </div>
+                            <div class="col-sm-8">
+                                <input type="text"
+                                       name="sequence"
+                                       class="form-control"
+                                       ng-model="property.sequence"
+                                       required
+                                       disabled>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <hr>
-                <div class="form-group">
-                    <div class="col-sm-2">
-                        <label class="control-label">Min. Pressure:</label>
-                    </div>
-                    <div class="col-sm-4">
-                        <input type="number" class="form-control" ng-model="property.minPressure">
-                    </div>
-                    <div class="col-sm-2">
-                        <label class="control-label">Max. Pressure:</label>
-                    </div>
-                    <div class="col-sm-4">
-                        <input type="number" class="form-control" ng-model="property.maxPressure">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group"
+                             ng-class="{ 'has-error has-feedback': metaForm.maxPressure.$dirty && metaForm.maxPressure.$invalid,
+                                 'has-success has-feedback': metaForm.maxPressure.$dirty && metaForm.maxPressure.$valid }">
+                            <div class="col-sm-4">
+                                <label class="control-label">Max. Pressure:</label>
+                            </div>
+                            <div class="col-sm-8">
+                                <div class="input-group">
+                                    <div class="input-group-addon" style="font-size: 9px;">Bar</div>
+                                    <input type="number"
+                                           name="maxPressure"
+                                           class="form-control"
+                                           ng-model="property.maxPressure">
+                                    <span ng-show="metaForm.maxPressure.$dirty && metaForm.maxPressure.$valid"
+                                          class="glyphicon glyphicon-ok form-control-feedback"></span>
+                                    <span ng-show="metaForm.maxPressure.$dirty && metaForm.maxPressure.$invalid"
+                                          class="glyphicon glyphicon-remove form-control-feedback"></span>
+                                </div>
+
+
+                                <div class="help-block"
+                                     ng-messages="metaForm.maxPressure.$error"
+                                     ng-show="metaForm.maxPressure.$dirty && metaForm.maxPressure.$invalid">
+                                    <div ng-messages-include="components/form/validation.html"></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="form-group">
-                    <div class="col-sm-2">
-                        <label class="control-label">Min. Temperature:</label>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group"
+                             ng-class="{ 'has-error has-feedback': metaForm.minTemp.$dirty && metaForm.minTemp.$invalid,
+                                 'has-success has-feedback': metaForm.minTemp.$dirty && metaForm.minTemp.$valid }">
+                            <div class="col-sm-4">
+                                <label class="control-label">Min. Temperature:</label>
+                            </div>
+                            <div class="col-sm-8">
+                                <div class="input-group">
+                                    <div class="input-group-addon">C°</div>
+                                    <input type="number"
+                                           name="minTemp"
+                                           min="-275"
+                                           max="1000"
+                                           class="form-control"
+                                           ng-model="property.minTemp">
+                            <span ng-show="metaForm.minTemp.$dirty && metaForm.minTemp.$valid"
+                                  class="glyphicon glyphicon-ok form-control-feedback"></span>
+                            <span ng-show="metaForm.minTemp.$dirty && metaForm.minTemp.$invalid"
+                                  class="glyphicon glyphicon-remove form-control-feedback"></span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-sm-4">
-                        <input type="number" class="form-control" ng-model="property.minTemperature">
-                    </div>
-                    <div class="col-sm-2">
-                        <label class="control-label">Max. Temperature:</label>
-                    </div>
-                    <div class="col-sm-4">
-                        <input type="number" class="form-control" ng-model="property.maxTemperature">
+                    <div class="col-sm-6">
+                        <div class="form-group"
+                             ng-class="{ 'has-error has-feedback': metaForm.maxTemp.$dirty && metaForm.maxTemp.$invalid,
+                                 'has-success has-feedback': metaForm.maxTemp.$dirty && metaForm.maxTemp.$valid }">
+                            <div class="col-sm-4">
+                                <label class="control-label">Max. Temperature:</label>
+                            </div>
+                            <div class="col-sm-8">
+                                <div class="input-group">
+                                    <div class="input-group-addon">C°</div>
+                                    <input type="number"
+                                           name="maxTemp"
+                                           min="-275"
+                                           max="1000"
+                                           class="form-control"
+                                           ng-model="property.maxTemp">
+                             <span ng-show="metaForm.maxTemp.$dirty && metaForm.maxTemp.$valid"
+                                   class="glyphicon glyphicon-ok form-control-feedback"></span>
+                             <span ng-show="metaForm.maxTemp.$dirty && metaForm.maxTemp.$invalid"
+                                   class="glyphicon glyphicon-remove form-control-feedback"></span>
+                                </div>
+
+                                <div class="help-block"
+                                     ng-messages="metaForm.maxTemp.$error"
+                                     ng-show="metaForm.maxTemp.$dirty && metaForm.maxTemp.$invalid">
+                                    <div ng-messages-include="components/form/validation.html"></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </form>

@@ -1,12 +1,17 @@
 <div class="panel panel-default">
     <div class="panel-heading">
-        <div class="panel-title inline">
-            Models
+        <div class="flextable">
+            <div class="flextable-item flextable-primary">
+                <div class="panel-title">
+                    Models
+                </div>
+            </div>
+            <div class="flextable-item">
+                <div class="panel-toolbar">
+                    <a ui-sref="app.filter.property.models"><span class="glyphicon glyphicon-plus"></span> Add</a>
+                </div>
+            </div>
         </div>
-        <div class="panel-toolbar">
-            <a ui-sref="app.filter.property.models"><span class="glyphicon glyphicon-plus"></span> Add</a>
-        </div>
-        <div class="clearfix"></div>
     </div>
     <table ng-table="tableParams" class="table table-condensed table-bordered table-striped m-b-none">
         <tr ng-repeat="row in $data">

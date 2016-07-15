@@ -42,12 +42,12 @@
         </div>
         <div class="panel-body">
             <div class="row">
-                <div class="col-sm-6 m-t-sm m-b-sm" ng-repeat="filter in filters" ng-if="filter.group.id==1">
-                    <div class="dragable">
-                        <div data-ng-include="'app/app/home/partials/filter.html'"></div>
+                <div ng-class="{'col-sm-6': layout == 1, 'col-sm-4': layout == 2}" ng-repeat="filter in filters" ng-if="filter.group.id==1">
+                    <div class="dragable" ng-drop="true" ng-drop-success="onDropComplete($index, $data, $event)">
+                        <div ng-drag="true" ng-drag-data="filter" data-allow-transform="true"  data-ng-include="'app/app/home/partials/filter.html'"></div>
                     </div>
                 </div>
-                <div class="col-sm-6 m-t-sm m-b-sm">
+                <div ng-class="{'col-sm-6': layout == 1, 'col-sm-4': layout == 2}">
                     <div class="dragable"></div>
                 </div>
             </div>
@@ -61,12 +61,12 @@
         </div>
         <div class="panel-body">
             <div class="row">
-                <div class="col-sm-6 m-t-sm m-b-sm" ng-repeat="filter in filters" ng-if="filter.group.id==2">
+                <div class="col-sm-6" ng-repeat="filter in filters" ng-if="filter.group.id==2">
                     <div class="dragable">
                         <div data-ng-include="'app/app/home/partials/filter.html'"></div>
                     </div>
                 </div>
-                <div class="col-sm-6 m-t-sm m-b-sm">
+                <div class="col-sm-6">
                     <div class="dragable"></div>
                 </div>
             </div>

@@ -26,7 +26,8 @@
     "moment": "~2.9.0",
     "ng-table": "https://github.com/Domtain/ng-table.git#1.0.0-beta.10",
     "angular-breadcrumb": "^0.4.1",
-    "angular-messages": "^1.5.7"
+    "angular-messages": "^1.5.7",
+    "ngDraggable": "^0.1.10"
   },
   "devDependencies": {
     "angular-mocks": "~1.5.0"

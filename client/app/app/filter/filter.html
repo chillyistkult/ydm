@@ -2,7 +2,7 @@
     <div class="dashhead m-b-sm">
         <div class="dashhead-titles">
             <h6 class="dashhead-subtitle"></h6>
-            <h3 ng-hide="isEdit" class="dashhead-title">{{::filter.name}}</h3>
+            <h3 class="dashhead-title">{{::filter.name}}</h3>
         </div>
 
         <div class="dashhead-toolbar">
@@ -10,20 +10,26 @@
     </div>
     <div class="panel panel-default">
         <div class="panel-heading">
-            <div class="panel-title">
-                Meta
+            <div class="flextable">
+                <div class="flextable-item flextable-primary">
+                    <div class="panel-title">
+                        Meta
+                    </div>
+                </div>
+                <div class="flextable-item">
+                    <div class="panel-toolbar">
+                        <a ng-click="metaForm.$valid && update(filter)" ng-disabled="metaForm.$pristine"><span
+                                class="glyphicon glyphicon-floppy-disk"></span> Save</a>
+                        <a ng-click="reset()" ng-disabled="metaForm.$pristine"><span
+                                class="glyphicon glyphicon-refresh"></span> Reset</a>
+                    </div>
+                </div>
             </div>
-            <div class="panel-toolbar">
-                <a class="panel-toolbar-item" ng-click="metaForm.$valid && update(filter)" ng-disabled="metaForm.$pristine"><span
-                        class="glyphicon glyphicon-floppy-disk"></span> Save</a>
-                <a class="panel-toolbar-item" ng-click="reset()" ng-disabled="metaForm.$pristine"><span
-                        class="glyphicon glyphicon-refresh"></span> Reset</a>
-            </div>
-            <div class="clearfix"></div>
         </div>
         <div class="panel-body">
             <form name="metaForm" novalidate class="form-horizontal">
-                <div class="form-group" ng-class="{ 'has-error has-feedback': metaForm.name.$dirty && metaForm.name.$invalid, 'has-success has-feedback': metaForm.name.$dirty && metaForm.name.$valid }">
+                <div class="form-group"
+                     ng-class="{ 'has-error has-feedback': metaForm.name.$dirty && metaForm.name.$invalid, 'has-success has-feedback': metaForm.name.$dirty && metaForm.name.$valid }">
                     <div class="col-sm-2">
                         <label class="control-label">Name:</label>
                     </div>
@@ -36,15 +42,19 @@
                                ng-maxlength="50"
                                required>
 
-                        <span ng-show="metaForm.name.$dirty && metaForm.name.$valid" class="glyphicon glyphicon-ok form-control-feedback"></span>
-                        <span ng-show="metaForm.name.$dirty && metaForm.name.$invalid" class="glyphicon glyphicon-remove form-control-feedback"></span>
+                        <span ng-show="metaForm.name.$dirty && metaForm.name.$valid"
+                              class="glyphicon glyphicon-ok form-control-feedback"></span>
+                        <span ng-show="metaForm.name.$dirty && metaForm.name.$invalid"
+                              class="glyphicon glyphicon-remove form-control-feedback"></span>
 
-                        <div class="help-block" ng-messages="metaForm.name.$error" ng-show="metaForm.name.$dirty && metaForm.name.$invalid">
+                        <div class="help-block" ng-messages="metaForm.name.$error"
+                             ng-show="metaForm.name.$dirty && metaForm.name.$invalid">
                             <div ng-messages-include="components/form/validation.html"></div>
                         </div>
                     </div>
                 </div>
-                <div class="form-group" ng-class="{ 'has-error has-feedback': metaForm.group.$dirty && metaForm.group.$invalid, 'has-success has-feedback': metaForm.group.$dirty && metaForm.group.$valid }">
+                <div class="form-group"
+                     ng-class="{ 'has-error has-feedback': metaForm.group.$dirty && metaForm.group.$invalid, 'has-success has-feedback': metaForm.group.$dirty && metaForm.group.$valid }">
                     <div class="col-sm-2">
                         <label class="control-label">Group:</label>
                     </div>
@@ -56,12 +66,14 @@
                                 required>
                         </select>
 
-                        <div class="help-block" ng-messages="metaForm.group.$error" ng-show="metaForm.group.$dirty && metaForm.group.$invalid">
+                        <div class="help-block" ng-messages="metaForm.group.$error"
+                             ng-show="metaForm.group.$dirty && metaForm.group.$invalid">
                             <div ng-messages-include="components/form/validation.html"></div>
                         </div>
                     </div>
                 </div>
-                <div class="form-group" ng-class="{ 'has-error has-feedback': metaForm.type.$dirty && metaForm.type.$invalid, 'has-success has-feedback': metaForm.type.$dirty && metaForm.type.$valid }">
+                <div class="form-group"
+                     ng-class="{ 'has-error has-feedback': metaForm.type.$dirty && metaForm.type.$invalid, 'has-success has-feedback': metaForm.type.$dirty && metaForm.type.$valid }">
                     <div class="col-sm-2">
                         <label class="control-label">Type:</label>
                     </div>
@@ -73,7 +85,8 @@
                                 required>
                         </select>
 
-                        <div class="help-block" ng-messages="metaForm.type.$error" ng-show="metaForm.type.$dirty && metaForm.type.$invalid">
+                        <div class="help-block" ng-messages="metaForm.type.$error"
+                             ng-show="metaForm.type.$dirty && metaForm.type.$invalid">
                             <div ng-messages-include="components/form/validation.html"></div>
                         </div>
                     </div>
@@ -96,8 +109,17 @@
     </div>
     <div class="panel panel-default">
         <div class="panel-heading">
-            <div class="panel-title">
-                Properties
+            <div class="flextable">
+                <div class="flextable-item flextable-primary">
+                    <div class="panel-title">
+                        Properties
+                    </div>
+                </div>
+                <div class="flextable-item">
+                    <div class="panel-toolbar">
+                        <a ui-sref="app.filter.properties"><span class="glyphicon glyphicon-plus"></span> Add</a>
+                    </div>
+                </div>
             </div>
         </div>
         <table class="table table-bordered table-striped table-condensed m-b-none">
@@ -106,16 +128,14 @@
                 <th>Name</th>
                 <th>min. Temperature</th>
                 <th>max. Temperature</th>
-                <th>min. Pressure</th>
                 <th>max. Pressure</th>
                 <th>Action</th>
             </tr>
             <tr ng-repeat="property in filter.propertyGroupFilter.propertyGroup.properties">
                 <td>{{property.id}}</td>
                 <td>{{property.name}}</td>
-                <td>{{property.minTemperature || '-'}}</td>
-                <td>{{property.maxTemperature || '-'}}</td>
-                <td>{{property.minPressure || '-'}}</td>
+                <td>{{property.minTemp || '-'}}</td>
+                <td>{{property.maxTemp || '-'}}</td>
                 <td>{{property.maxPressure || '-'}}</td>
                 <td>
                     <div class="text-center">
