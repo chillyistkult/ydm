@@ -5,4 +5,9 @@ angular.module('app.config', [])
         api: '@@api',
         env: '@@env',
         version: '@@version',
+        layout: {
+            placeholder: {
+                list: 160,
+            },
+        }
     });

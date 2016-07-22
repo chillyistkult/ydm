@@ -5,4 +5,9 @@ angular.module('app.config', [])
         api: 'http://ydm.app/api',
         env: 'development',
         version: '0.0.0',
+        layout: {
+            placeholder: {
+                list: 160,
+            },
+        }
     });

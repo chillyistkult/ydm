@@ -57,66 +57,6 @@
   border-radius: 0
 }
 
-.dragable {
-  .wrapper-xs;
-  margin: 5px 0;
-  cursor: move;
-  height: 50px;
-  border: 1px solid;
-  border-style: dashed;
-
-  &[ng-drop].drag-enter {
-    &:before {
-      content: "\e089";
-    }
-    border: 2px solid;
-  }
-
-  > [ng-drag] {
-    &.drag-over {
-      padding: 5px;
-      //border: 1px solid;
-    }
-    &.dragging {
-      position: relative;
-      opacity: 0.6;
-    }
-  }
-
-  &:empty {
-    cursor: pointer;
-    &:after {
-      position: absolute;
-      opacity: 0.15;
-      font-size: 2rem;
-      top: 50%;
-      left: 20px;
-      text-transform: uppercase;
-      font-weight: bold;
-      transform: translateY(-50%);
-      -webkit-transform: translateY(-50%);
-      -ms-transform: translateY(-50%);
-      content: 'Add filter'
-    }
-    &:before {
-      content: "\002b";
-    }
-  }
-
-  &:before {
-    position: absolute;
-    opacity: 0.15;
-    font-size: 2rem;
-    top: 50%;
-    right: 20px;
-    transform: translateY(-50%);
-    -webkit-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    content: "\e068";
-    font-family: "Glyphicons Halflings";
-  }
-}
-
 .block {
   display: block;
 }

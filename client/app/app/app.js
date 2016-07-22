@@ -43,7 +43,7 @@ angular.module('ydmApp')
                 },
                 ncyBreadcrumb: {
                     label: 'Home'
-                },
+                }
             })
             .state('app.filter', {
                 url: '/filters/{fId}',

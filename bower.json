@@ -8,7 +8,6 @@
     "angular-resource": "~1.5.0",
     "angular-cookies": "~1.5.0",
     "angular-sanitize": "~1.5.0",
-    "lodash": "~2.4.1",
     "angular-socket-io": "~0.7.0",
     "angular-ui-router": "~0.3.0",
     "angular-validation-match": "~1.5.2",
@@ -24,10 +23,11 @@
     "ngstorage": "^0.3.10",
     "angulartics-google-analytics": "^0.1.4",
     "moment": "~2.9.0",
-    "ng-table": "https://github.com/Domtain/ng-table.git#1.0.0-beta.10",
+    "ng-table": "~1.0.0",
     "angular-breadcrumb": "^0.4.1",
     "angular-messages": "^1.5.7",
-    "ngDraggable": "^0.1.10"
+    "ngDraggable": "^0.1.10",
+    "underscore": "^1.8.3"
   },
   "devDependencies": {
     "angular-mocks": "~1.5.0"

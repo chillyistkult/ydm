@@ -2,9 +2,9 @@
     <div ng-switch-when="1">
         <div class="form-horizontal">
             <div class="row" ng-class="{'greyed-out': filter.sequence == -1}">
-                <div class="col-sm-6">
-                    <div class="input-group" ng-cancel-drag ng-init="filter.isSelected = false;">
-                        <div class="btn-switch btn-switch-inverse pull-right pull-left-xs">
+                <div class="col-sm-5">
+                    <div class="input-group pull-right" ng-cancel-drag ng-init="filter.isSelected = false;">
+                        <div class="btn-switch btn-switch-inverse pull-right">
                             <input type="checkbox" ng-model="filter.isSelected" id="switch-{{filter.id}}">
                             <label for="switch-{{filter.id}}"></label>
                         </div>
@@ -15,8 +15,8 @@
                         </span>
                     </div>
                 </div>
-                <div class="col-sm-6">
-                    <label class="control-label">{{filter.name}}</label>
+                <div class="col-sm-7">
+                    <label class="control-label">{{filter.name}} {{filter.group.id}} {{filter.spaceLeft}}</label>
                 </div>
             </div>
         </div>
@@ -24,7 +24,7 @@
     <div ng-switch-when="2">
         <div class="form-horizontal">
             <div class="row" ng-class="{'greyed-out': filter.sequence == -1}">
-                <div class="col-sm-6">
+                <div class="col-sm-5">
                     <div class="input-group" ng-cancel-drag>
                         <select class="form-control custom-select custom-select-inverse"
                                 ng-model="filter.Property"
@@ -38,8 +38,8 @@
                         </span>
                     </div>
                 </div>
-                <div class="col-sm-6">
-                    <label class="control-label">{{filter.name}}</label>
+                <div class="col-sm-7">
+                    <label class="control-label">{{filter.name}} {{filter.group.id}} {{filter.spaceLeft}} {{filter.spaceRight}}</label>
                 </div>
             </div>
         </div>

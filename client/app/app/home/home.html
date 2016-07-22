@@ -42,13 +42,18 @@
         </div>
         <div class="panel-body">
             <div class="row">
-                <div ng-class="{'col-sm-6': layout == 1, 'col-sm-4': layout == 2}" ng-repeat="filter in filters" ng-if="filter.group.id==1">
-                    <div class="dragable" ng-drop="true" ng-drop-success="onDropComplete($index, $data, $event)">
-                        <div ng-drag="true" ng-drag-data="filter" data-allow-transform="true"  data-ng-include="'app/app/home/partials/filter.html'"></div>
+                <div ng-repeat="filter in filters" ng-if="filter.group.id == 1">
+                    <div ng-class="{'col-sm-6': layout[filter.group.id] < 2 || layout[filter.group.id] === undefined, 'col-sm-4': layout[filter.group.id] >= 2}">
+                        <div class="dragable" ng-drop="true"
+                             ng-drop-success="onDropComplete($index, $data, $event)">
+                            <div ng-drag="true" ng-drag-data="filter" data-allow-transform="true"
+                                 data-ng-include="'app/app/home/partials/filter.html'"></div>
+                        </div>
                     </div>
                 </div>
-                <div ng-class="{'col-sm-6': layout == 1, 'col-sm-4': layout == 2}">
-                    <div class="dragable"></div>
+                <div ng-class="{'col-sm-6': layout[filter.group.id] < 2 || layout[filter.group.id] === undefined, 'col-sm-4': layout[filter.group.id] >= 2}">
+                    <div class="dragable dragable-add">
+                    </div>
                 </div>
             </div>
         </div>
@@ -61,14 +66,31 @@
         </div>
         <div class="panel-body">
             <div class="row">
-                <div class="col-sm-6" ng-repeat="filter in filters" ng-if="filter.group.id==2">
-                    <div class="dragable">
-                        <div data-ng-include="'app/app/home/partials/filter.html'"></div>
+                <div ng-repeat="filter in filters" ng-if="filter.group.id == 2">
+                    <div ng-class="{'col-sm-6': layout[filter.group.id] < 2 || layout[filter.group.id] === undefined, 'col-sm-4': layout[filter.group.id] >= 2}">
+                        <div class="dragable"
+                             ng-drop="true"
+                             ng-drop-success="onDropComplete($index, $data, $event)">
+                            <div ng-drag="true" ng-drag-data="filter" data-allow-transform="true"
+                                 data-ng-include="'app/app/home/partials/filter.html'"></div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-sm-6">
-                    <div class="dragable"></div>
+                <div ng-class="{'col-sm-6': layout[filter.group.id] < 2 || layout[filter.group.id] === undefined, 'col-sm-4': layout[filter.group.id] >= 2}">
+                    <div class="dragable dragable-add"
+                         ng-drop="true"
+                         ng-drop-success="onDropAddComplete($index, $data, $event)"></div>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="filter-control" ng-show="filtersChanged">
+    <div class="container">
+        <div class="text-center">
+            <div>
+                <button ng-click="save()" class="btn btn-sm btn-success w-xs m-r-xs">Save</button>
+                <button ng-click="reset()" class="btn btn-sm btn-default w-xs">Reset</button>
             </div>
         </div>
     </div>
