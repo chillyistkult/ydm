@@ -98,7 +98,7 @@ selectNodeVersion () {
 # Deployment
 # ----------
 
-echo Handling node.js grunt deployment.
+echo Handling YDM deployment!
 
 # 1. Select node version
 selectNodeVersion
