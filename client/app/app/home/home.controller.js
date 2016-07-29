@@ -1,11 +1,12 @@
 'use strict';
 
 angular.module('ydmApp')
-    .controller('HomeCtrl', function ($scope, $filter, Repository) {
+    .controller('HomeCtrl', function ($scope, $filter, Repository, Message) {
 
             // Index = Dropindex
             // Obj = Dragged obj
             $scope.onDropComplete = function (index, obj, event) {
+
                 if (obj) {
                     // Get destination object
                     var destObj = $scope.filters[index];
@@ -56,7 +57,7 @@ angular.module('ydmApp')
 
             $scope.getLayout = function (filters) {
                 /*  We are trying to determine if a boolean filter
-                    occurs next to each other in respective groups */
+                 occurs next to each other in respective groups */
                 var layout = {};
                 for (var i = 0; i < filters.length; i++) {
                     // Initialize a counter to count up the occurencies of boolean filter per group
@@ -78,20 +79,20 @@ angular.module('ydmApp')
                 return layout;
             }
 
-            var calcSpace = function(filter, columns) {
+            var calcSpace = function (filter, columns) {
                 return columns == 2 ? 0 : filter.spaceLeft - 160;
             }
 
             $scope.fillPlaceholder = function (filters, layout) {
-                var groups = {};
-
                 /* We are trying to transform traditional layout to our grid system.
                  * To achive this we fill the filter collection with placeholder objects
                  * if there is a spacing defined */
+
+                var grouped = {};
+
                 for (var i = 0, j = 0; i < filters.length; i++, j = i) {
                     var columns = layout[filters[i].group.id] < 2 ? 2 : 3;
                     while (filters[j].spaceLeft > 134) {
-                        var space = filters[j].spaceLeft / (columns - 1);
                         insert(filters, {
                             spaceLeft: calcSpace(filters[j], columns),
                             group: angular.copy(filters[j].group)
@@ -99,12 +100,17 @@ angular.module('ydmApp')
                         i++;
                     }
                 }
-
                 /*
-                 for (var j = 0; j < columns - (filters.length % columns); j++) {
+                 angular.forEach(layout, function(key, value) {
+                 var columns = value < 2 ? 2 : 3;
+                 for(var i = 0; i < grouped)
+                 })
+
+                 for (var i = 0; i < columns - (filters.length % columns); i++) {
                  insert(filters, {group: angular.copy(filters[i].group)}, i + 1);
                  }
                  */
+
 
                 function insert(collection, item, index) {
                     collection.splice(index, 0, item);
@@ -113,14 +119,34 @@ angular.module('ydmApp')
                 return filters;
             };
 
-            $scope.update = function () {
-
+            $scope.update = function (filters) {
+                Repository.updateFilters(filters).then(function (res) {
+                    $scope.filtersOriginal = angular.copy(res.data);
+                    Message.logSuccess('Filter successfully updated!');
+                    $scope.filtersChanged = false;
+                })
             };
 
             $scope.reset = function () {
                 $scope.filters = $scope.fillPlaceholder(angular.copy($scope.filtersOriginal), $scope.layout);
                 $scope.filtersChanged = false;
             };
+
+            $scope.$watch('filters', function (newValue, oldValue) {
+                if (!angular.equals(newValue, oldValue)) {
+                    var filters = $scope.filters;
+                    for (var i = 0, j = 0, k = 0; i < $scope.filters.length; i++) {
+                        if (filters[i].sequence != undefined && filters[i].sequence != -1) {
+                            if (filters[i].group.id == 1) {
+                                filters[i].sequence = j++;
+                            }
+                            if (filters[i].group.id == 2) {
+                                filters[i].sequence = k++;
+                            }
+                        }
+                    }
+                }
+            }, true);
 
             $scope.$watchGroup(['technology'], function (newValue, oldValue) {
                 if (!angular.equals(newValue, oldValue)) {

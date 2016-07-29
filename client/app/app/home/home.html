@@ -51,7 +51,7 @@
                         </div>
                     </div>
                 </div>
-                <div ng-class="{'col-sm-6': layout[filter.group.id] < 2 || layout[filter.group.id] === undefined, 'col-sm-4': layout[filter.group.id] >= 2}">
+                <div ng-class="{'col-sm-6': layout[1] < 2 || layout[1] === undefined, 'col-sm-4': layout[1] >= 2}">
                     <div class="dragable dragable-add">
                     </div>
                 </div>
@@ -76,7 +76,7 @@
                         </div>
                     </div>
                 </div>
-                <div ng-class="{'col-sm-6': layout[filter.group.id] < 2 || layout[filter.group.id] === undefined, 'col-sm-4': layout[filter.group.id] >= 2}">
+                <div ng-class="{'col-sm-6': layout[2] < 2 || layout[2] === undefined, 'col-sm-4': layout[2] >= 2}">
                     <div class="dragable dragable-add"
                          ng-drop="true"
                          ng-drop-success="onDropAddComplete($index, $data, $event)"></div>
@@ -89,7 +89,7 @@
     <div class="container">
         <div class="text-center">
             <div>
-                <button ng-click="save()" class="btn btn-sm btn-success w-xs m-r-xs">Save</button>
+                <button ng-click="update(filters)" class="btn btn-sm btn-success w-xs m-r-xs">Save</button>
                 <button ng-click="reset()" class="btn btn-sm btn-default w-xs">Reset</button>
             </div>
         </div>
