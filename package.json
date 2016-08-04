@@ -102,7 +102,7 @@
     "npm": "3.9.5"
   },
   "scripts": {
-    "start": "node dist/server",
+    "start": "node server",
     "test": "grunt test",
     "update-webdriver": "node node_modules/grunt-protractor-runner/node_modules/protractor/bin/webdriver-manager update"
   },
