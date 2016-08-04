@@ -9,7 +9,7 @@ angular.module('ydmApp')
             if (form.$valid) {
                 Auth.login(user)
                     .then(function (user) {
-                        $state.go('app.home');
+                        $state.go('app.filters');
                     })
                     .catch(function (err) {
                     });

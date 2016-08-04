@@ -8,7 +8,8 @@
             </div>
             <div class="flextable-item">
                 <div class="panel-toolbar">
-                    <a ui-sref="app.filter.property.models"><span class="glyphicon glyphicon-plus"></span> Add</a>
+                    <a ui-sref="app.filters.edit.properties.edit.models.add"><span
+                            class="glyphicon glyphicon-plus"></span> Add</a>
                 </div>
             </div>
         </div>
@@ -27,6 +28,8 @@
                     </div>
                 </div>
             </td>
+        <tr ng-if="$data.length==0">
+            <td colspan="4">No properties found</td>
         </tr>
     </table>
 </div>

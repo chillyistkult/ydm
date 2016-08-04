@@ -103,7 +103,8 @@ angular.module('ydmApp', [
     })
     .config(function ($breadcrumbProvider) {
         $breadcrumbProvider.setOptions({
-            templateUrl: 'app/app/breadcrumb/template.html'
+            templateUrl: 'app/app/breadcrumb/template.html',
+            includeAbstract: true,
         });
     })
     .config(function ($provide) {
@@ -142,10 +143,11 @@ angular.module('ydmApp', [
         '$rootScope',
         '$state',
         '$filter',
+        '$breadcrumb',
         'Auth',
         'Message',
         'Restangular',
-        '$templateCache', function ($rootScope, $state, $filter, Auth, Message, RestangularProvider, $templateCache) {
+        '$templateCache', function ($rootScope, $state, $filter, $breadcrumb, Auth, Message, RestangularProvider, $templateCache) {
             // Redirect to login if route requires auth and the user is not logged in
             $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
                 if (toState.redirectTo) {
@@ -155,7 +157,7 @@ angular.module('ydmApp', [
                 if (toState.name === 'access.login') {
                     if (Auth.isAuthenticated()) {
                         event.preventDefault();
-                        $state.go('app.home');
+                        $state.go('app.filters');
                         return;
                     }
                 }
