@@ -1,5 +1,5 @@
 {
   "env": "production",
-  "api": "http://ydm-api.herokuapp.com/api/",
+  "api": "https://ydm-api.herokuapp.com/api/",
   "version": "0.0.0"
 }
