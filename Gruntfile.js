@@ -37,7 +37,7 @@ module.exports = function (grunt) {
         },
         express: {
             options: {
-                port: process.env.PORT || 9000
+                port: process.env.PORT || 9001
             },
             dev: {
                 options: {
@@ -197,7 +197,7 @@ module.exports = function (grunt) {
                 options: {
                     nodeArgs: ['--debug-brk'],
                     env: {
-                        PORT: process.env.PORT || 9000
+                        PORT: process.env.PORT || 9001
                     },
                     callback: function (nodemon) {
                         nodemon.on('log', function (event) {
@@ -322,9 +322,6 @@ module.exports = function (grunt) {
         // Allow the use of non-minsafe AngularJS files. Automatically makes it
         // minsafe compatible so Uglify does not destroy the ng references
         ngAnnotate: {
-            options: {
-                sourceMap: false,
-            },
             dist: {
                 files: [{
                     expand: true,
@@ -339,15 +336,14 @@ module.exports = function (grunt) {
         ngtemplates: {
             options: {
                 // This should be the name of your apps angular module
-                module: 'domtainApp',
+                module: 'ydmApp',
                 htmlmin: {
-                    collapseBooleanAttributes: true,
                     collapseWhitespace: true,
-                    removeAttributeQuotes: true,
-                    removeComments: true,
-                    removeEmptyAttributes: true,
-                    removeScriptTypeAttributes: true,
-                    removeStyleLinkTypeAttributes: true
+                    conservativeCollapse: true,
+                    collapseBooleanAttributes: true,
+                    removeCommentsFromCDATA: true,
+                    removeOptionalTags: true,
+                    removeComments: true
                 },
                 usemin: 'app/app.js'
             },
@@ -604,7 +600,7 @@ module.exports = function (grunt) {
                     endtag: '// endinjector'
                 },
                 files: {
-                    '<%= yeoman.client %>/app/app.less': [
+                        '<%= yeoman.client %>/app/app.less': [
                         '<%= yeoman.client %>/{app,components,assets}/**/*.less',
                         '!<%= yeoman.client %>/app/app.less'
                     ]
