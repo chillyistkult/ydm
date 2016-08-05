@@ -1,7 +1,6 @@
 branch-defaults:
   master:
-    environment: null
-    group_suffix: null
+    environment: ydm-web
 global:
   application_name: ydm-web
   default_ec2_keyname: aws-eb
