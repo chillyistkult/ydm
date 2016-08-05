@@ -37,6 +37,7 @@
     "chai-things": "^0.2.0",
     "connect-livereload": "^0.5.3",
     "grunt": "~1.0.1",
+    "grunt-cli": "0.1.13",
     "grunt-angular-templates": "^1.0.3",
     "grunt-babel": "^6.0.0",
     "grunt-build-control": "^0.7.0",
@@ -102,6 +103,7 @@
     "npm": "3.9.5"
   },
   "scripts": {
+    "prestart": "bower install && if $LIVE_ENV; then grunt build:production; else grunt build:development; fi",
     "start": "node dist/server",
     "test": "grunt test",
     "postinstall": "bower install && if $LIVE_ENV; then grunt build:production; else grunt build:development; fi",
