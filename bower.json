@@ -24,7 +24,7 @@
     "angulartics-google-analytics": "^0.1.4",
     "moment": "~2.9.0",
     "ng-table": "~1.0.0",
-    "angular-breadcrumb": "^0.4.1",
+    "angular-breadcrumb": "https://github.com/woodwardsoftware/angular-breadcrumb.git#feat-injection",
     "angular-messages": "^1.5.7",
     "ngDraggable": "^0.1.10",
     "underscore": "^1.8.3"
