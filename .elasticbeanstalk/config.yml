@@ -2,7 +2,7 @@ branch-defaults:
   master:
     environment: ydm-web
 global:
-  application_name: ydm-web
+  application_name: ydm
   default_ec2_keyname: aws-eb
   default_platform: Node.js
   default_region: eu-west-1
