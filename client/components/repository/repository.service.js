@@ -19,6 +19,12 @@ angular.module('ydmApp')
                 updateFilter: function(id, data) {
                     return Restangular.one('filters', id).customPUT(data);
                 },
+                deleteFilter: function(id) {
+                    return Restangular.one('filters', id).customDELETE();
+                },
+                addFilter: function(data, params) {
+                    return Restangular.all('filters').customPOST(data);
+                },
                 getFilters: function(params) {
                     return Restangular.all('filters').getList(params);
                 },
@@ -48,6 +54,12 @@ angular.module('ydmApp')
                 },
                 getFilterGroups: function(params) {
                     return Restangular.all('filters/groups').getList(params);
+                },
+                getProductGroup: function(id, params) {
+                    return Restangular.one('productgroups', id).get(params);
+                },
+                getProductGroups: function(id, params) {
+                    return Restangular.all('productgroups').getList(params);
                 },
                 getModel: function(id, params) {
                     return Restangular.one('models', id).get(params);

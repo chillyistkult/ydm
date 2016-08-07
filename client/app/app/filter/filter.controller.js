@@ -46,7 +46,6 @@ angular.module('ydmApp')
             $scope.getProductLines = function (id) {
                 Repository.getProductLines(id).then(function (res) {
                     $scope.productLines = res.data.plain();
-                    debugger;
                     var index = res.data.indexOf(product);
                     if (index != -1) {
                         $scope.productLine = $scope.productLines[index];
@@ -63,6 +62,14 @@ angular.module('ydmApp')
                     $scope.filters = $scope.fillPlaceholder(res.data, $scope.layout);
                 })
             };
+
+            $scope.deleteFilter = function (id) {
+                Repository.deleteFilter(id).then(function (res) {
+                    $scope.filters = $scope.fillPlaceholder(_.reject($scope.filters, function (f) {
+                        return f.id === res.data.id;
+                    }), $scope.layout);
+                })
+            }
 
             $scope.getLayout = function (filters) {
                 /*  We are trying to determine if a boolean filter

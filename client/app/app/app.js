@@ -57,7 +57,7 @@ angular.module('ydmApp')
                 }
             })
             .state('app.filters.edit', {
-                url: '/filters/{fId}',
+                url: '/filters/{fId:int}',
                 ncyBreadcrumb: {
                     label: function ($stateParams) {
                         return $stateParams.fId
@@ -84,6 +84,64 @@ angular.module('ydmApp')
                         return Repository.getFilterGroups().then(function (res) {
                             return res.data.plain();
                         })
+                    },
+                    productGroups: function (Repository) {
+                        return Repository.getProductGroups().then(function (res) {
+                            return res.data.plain();
+                        })
+                    },
+                }
+            })
+            .state('app.filters.add', {
+                url: '/filters/add',
+                params: {
+                    group: null,
+                    productGroup: null,
+                },
+                ncyBreadcrumb: {
+                    label: 'Add'
+                },
+                views: {
+                    'content@app': {
+                        templateUrl: 'app/app/filter/add/add.html',
+                        controller: 'FilterAddCtrl'
+                    }
+                },
+                resolve: {
+                    types: function (Repository) {
+                        return Repository.getFilterTypes().then(function (res) {
+                            return res.data.plain();
+                        })
+                    },
+                    groups: function (Repository) {
+                        return Repository.getFilterGroups().then(function (res) {
+                            return res.data.plain();
+                        })
+                    },
+                    productGroups: function (Repository) {
+                        return Repository.getProductGroups().then(function (res) {
+                            return res.data.plain();
+                        })
+                    },
+                    group: function (groups, $stateParams) {
+                        if (_.isNumber($stateParams.group)) {
+                            return _.find(groups, function (group) {
+                                return group.id == $stateParams.group;
+                            });
+                        }
+                        if (_.isObject($stateParams.group)) {
+                            return $stateParams.group;
+                        }
+                    },
+                    productGroup: function (productGroups, $stateParams) {
+                        if (_.isNumber($stateParams.productGroup)) {
+                            return _.find(productGroups, function (productGroup) {
+                                return productGroup.id == $stateParams.productGroup;
+                            });
+                        }
+                        if (_.isObject($stateParams.group)) {
+                            return $stateParams.productGroup;
+                        }
                     }
                 }
             })

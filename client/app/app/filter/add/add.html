@@ -2,7 +2,7 @@
     <div class="dashhead m-b-sm">
         <div class="dashhead-titles">
             <h6 class="dashhead-subtitle"></h6>
-            <h3 class="dashhead-title">{{::filter.name}}</h3>
+            <h3 class="dashhead-title">Add filter</h3>
         </div>
 
         <div class="dashhead-toolbar">
@@ -18,7 +18,7 @@
                 </div>
                 <div class="flextable-item">
                     <div class="panel-toolbar">
-                        <a ng-click="metaForm.$valid && update(filter)" ng-disabled="metaForm.$pristine"><span
+                        <a ng-click="metaForm.$valid && save(filter)" ng-disabled="metaForm.$pristine"><span
                                 class="glyphicon glyphicon-floppy-disk"></span> Save</a>
                         <a ng-click="reset()" ng-disabled="metaForm.$pristine"><span
                                 class="glyphicon glyphicon-refresh"></span> Reset</a>
@@ -126,7 +126,6 @@
                                 name="productGroup"
                                 ng-model="filter.productGroup"
                                 ng-options="productGroup as productGroup.description for productGroup in productGroups track by productGroup.id"
-                                ng-disabled="filter.productGroup"
                                 required>
                         </select>
 
@@ -134,19 +133,6 @@
                              ng-show="metaForm.productGroup.$dirty && metaForm.productGroup.$invalid">
                             <div ng-messages-include="components/form/validation.html"></div>
                         </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-sm-2">
-                        <label class="control-label">Display sequence:</label>
-                    </div>
-                    <div class="col-sm-4">
-                        <input type="text"
-                               name="sequence"
-                               class="form-control"
-                               ng-model="filter.sequence"
-                               required
-                               disabled>
                     </div>
                 </div>
             </form>
@@ -160,39 +146,14 @@
                         Properties
                     </div>
                 </div>
-                <div class="flextable-item">
-                    <div class="panel-toolbar">
-                        <a ui-sref="app.filter.properties"><span class="glyphicon glyphicon-plus"></span> Add</a>
-                    </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="text-center">
+                <div class="alert alert-info m-b-none" role="alert">
+                    You have to save the filter before you can add any properties
                 </div>
             </div>
         </div>
-        <table class="table table-bordered table-striped table-condensed m-b-none">
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>min. Temperature</th>
-                <th>max. Temperature</th>
-                <th>max. Pressure</th>
-                <th>Action</th>
-            </tr>
-            <tr ng-repeat="property in filter.propertyGroupFilter.propertyGroup.properties">
-                <td>{{property.id}}</td>
-                <td>{{property.name}}</td>
-                <td>{{property.minTemp || '-'}}</td>
-                <td>{{property.maxTemp || '-'}}</td>
-                <td>{{property.maxPressure || '-'}}</td>
-                <td>
-                    <div class="text-center">
-                        <a ui-sref="app.filters.edit.properties.edit({pId: property.id})">
-                            <i class="glyphicon glyphicon-edit"></i>
-                        </a>
-                        <a>
-                            <i class="glyphicon glyphicon-trash"></i>
-                        </a>
-                    </div>
-                </td>
-            </tr>
-        </table>
     </div>
 </div>
