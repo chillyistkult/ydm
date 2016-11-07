@@ -1,11 +1,8 @@
 machine:
   node:
     version: 6.0.0
-dependencies:
-  pre:
-    - pip install awsebcli
 deployment:
-  production:
+  prod:
     branch: master
     commands:
-      - eb deploy --profile default
+      - aws s3 sync dist/client s3://ydmstatic/ --delete
