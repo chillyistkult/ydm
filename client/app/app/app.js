@@ -33,11 +33,7 @@ angular.module('ydmApp')
                 },
             })
             .state('app.filters', {
-                url: '',
-                params: {
-                    tId: null,
-                    pId: null,
-                },
+                url: '?{technology:int}&{product:int}',
                 views: {
                     'content': {
                         templateUrl: 'app/app/filter/filter.html',
@@ -49,10 +45,10 @@ angular.module('ydmApp')
                 },
                 resolve: {
                     technology: function ($stateParams) {
-                        return $stateParams.tId;
+                        return $stateParams.technology;
                     },
                     product: function ($stateParams) {
-                        return $stateParams.pId;
+                        return $stateParams.product;
                     }
                 }
             })

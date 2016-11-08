@@ -43,7 +43,7 @@
         </div>
         <div class="panel-body">
             <div class="row">
-                <div ng-repeat="filter in filters" ng-if="filter.group.id == 1">
+                <div ng-repeat="filter in filters" ng-if="filter.group.id === 1">
                     <div ng-class="{'col-sm-6': layout[filter.group.id] < 2 || layout[filter.group.id] === undefined, 'col-sm-4': layout[filter.group.id] >= 2}">
                         <div class="dragable" ng-drop="true"
                              ng-drop-success="onDropComplete($index, $data, $event)">
@@ -70,7 +70,7 @@
         </div>
         <div class="panel-body">
             <div class="row">
-                <div ng-repeat="filter in filters" ng-if="filter.group.id == 2">
+                <div ng-repeat="filter in filters" ng-if="filter.group.id === 2">
                     <div ng-class="{'col-sm-6': layout[filter.group.id] < 2 || layout[filter.group.id] === undefined, 'col-sm-4': layout[filter.group.id] >= 2}">
                         <div class="dragable"
                              ng-drop="true"

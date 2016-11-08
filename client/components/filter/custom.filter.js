@@ -11,7 +11,7 @@ angular.module('ydmApp')
     .filter('firstOfGroup', function () {
         return function (collection, id) {
             for(var i = 0; i < collection.length; i++) {
-                if(collection[i].group.id = id) {
+                if(collection[i].group.id === id) {
                     return collection[i];
                 }
             }

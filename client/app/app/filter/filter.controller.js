@@ -35,10 +35,10 @@ angular.module('ydmApp')
             $scope.getTechnologies = function () {
                 Repository.getTechnologies().then(function (res) {
                     $scope.technologies = res.data.plain();
-
-                    var index = $scope.technologies.indexOf(technology);
-                    if (index != -1) {
-                        $scope.technology = $scope.technologies[index];
+                    for (var i = 0; i < $scope.technologies.length; i++) {
+                        if ($scope.technologies[i].id === technology) {
+                            $scope.technology = $scope.technologies[i];
+                        }
                     }
                 })
             };
@@ -46,11 +46,11 @@ angular.module('ydmApp')
             $scope.getProductLines = function (id) {
                 Repository.getProductLines(id).then(function (res) {
                     $scope.productLines = res.data.plain();
-                    var index = res.data.indexOf(product);
-                    if (index != -1) {
-                        $scope.productLine = $scope.productLines[index];
-                    } else {
-                        $scope.productLine = $scope.productLines[0];
+                    $scope.productLine = $scope.productLines[0];
+                    for (var i = 0; i < $scope.productLines.length; i++) {
+                        if ($scope.productLines[i].id === product) {
+                            $scope.productLine = $scope.productLines[i];
+                        }
                     }
                 })
             };
@@ -60,6 +60,7 @@ angular.module('ydmApp')
                     $scope.filtersOriginal = angular.copy(res.data);
                     $scope.layout = $scope.getLayout(res.data);
                     $scope.filters = $scope.fillPlaceholder(res.data, $scope.layout);
+                    console.log($scope.filters);
                 })
             };
 
@@ -75,20 +76,22 @@ angular.module('ydmApp')
                 /*  We are trying to determine if a boolean filter
                  occurs next to each other in respective groups */
                 var layout = {};
-                for (var i = 0; i < filters.length; i++) {
-                    // Initialize a counter to count up the occurencies of boolean filter per group
-                    if (!layout[filters[i].group.id]) {
-                        layout[filters[i].group.id] = 0;
-                    }
-                    // Check if there are already boolean filters next to each other
-                    if (layout[filters[i].group.id] < 2) {
-                        // Is the current filter a boolean one?
-                        if (filters[i].type.id == 1 && filters[i].spaceLeft == 0) {
-                            // If yes, count up
-                            layout[filters[i].group.id] += 1;
-                        } else {
-                            // If not, reset counter to 0
+                if (filters) {
+                    for (var i = 0; i < filters.length; i++) {
+                        // Initialize a counter to count up the occurencies of boolean filter per group
+                        if (!layout[filters[i].group.id]) {
                             layout[filters[i].group.id] = 0;
+                        }
+                        // Check if there are already boolean filters next to each other
+                        if (layout[filters[i].group.id] < 2) {
+                            // Is the current filter a boolean one?
+                            if (filters[i].type.id == 1 && filters[i].spaceLeft == 0) {
+                                // If yes, count up
+                                layout[filters[i].group.id] += 1;
+                            } else {
+                                // If not, reset counter to 0
+                                layout[filters[i].group.id] = 0;
+                            }
                         }
                     }
                 }
@@ -104,16 +107,16 @@ angular.module('ydmApp')
                  * To achive this we fill the filter collection with placeholder objects
                  * if there is a spacing defined */
 
-                var grouped = {};
-
-                for (var i = 0, j = 0; i < filters.length; i++, j = i) {
-                    var columns = layout[filters[i].group.id] < 2 ? 2 : 3;
-                    while (filters[j].spaceLeft > 134) {
-                        insert(filters, {
-                            spaceLeft: calcSpace(filters[j], columns),
-                            group: angular.copy(filters[j].group)
-                        }, j);
-                        i++;
+                if (filters) {
+                    for (var i = 0, j = 0; i < filters.length; i++, j = i) {
+                        var columns = layout[filters[i].group.id] < 2 ? 2 : 3;
+                        while (filters[j].spaceLeft > 134) {
+                            insert(filters, {
+                                spaceLeft: calcSpace(filters[j], columns),
+                                group: angular.copy(filters[j].group)
+                            }, j);
+                            i++;
+                        }
                     }
                 }
                 /*
@@ -149,24 +152,26 @@ angular.module('ydmApp')
             };
 
             $scope.$watch('filters', function (newValue, oldValue) {
-                if (!angular.equals(newValue, oldValue)) {
-                    var filters = $scope.filters;
-                    for (var i = 0, j = 0, k = 0; i < $scope.filters.length; i++) {
-                        if (filters[i].sequence != undefined && filters[i].sequence != -1) {
-                            if (filters[i].group.id == 1) {
-                                filters[i].sequence = j++;
-                            }
-                            if (filters[i].group.id == 2) {
-                                filters[i].sequence = k++;
-                            }
-                        }
-                    }
-                }
+                /*
+                 if (!angular.equals(newValue, oldValue)) {
+                 var filters = $scope.filters;
+                 for (var i = 0, j = 0, k = 0; i < filters.length; i++) {
+                 if (filters[i].sequence != undefined && filters[i].sequence != -1) {
+                 if (filters[i].group.id == 1) {
+                 filters[i].sequence = j++;
+                 }
+                 if (filters[i].group.id == 2) {
+                 filters[i].sequence = k++;
+                 }
+                 }
+                 }
+                 }
+                 */
             }, true);
 
             $scope.$watchGroup(['technology'], function (newValue, oldValue) {
                 if (!angular.equals(newValue, oldValue)) {
-                    $state.go($state.current.name, {tId: $scope.technology.id}, {
+                    $state.go($state.current.name, {technology: $scope.technology.id}, {
                         reload: false,
                         inherit: true,
                         notify: false
@@ -177,11 +182,11 @@ angular.module('ydmApp')
 
             $scope.$watchGroup(['productLine'], function (newValue, oldValue) {
                 if (!angular.equals(newValue, oldValue)) {
-                    $state.go($state.current.name, {pId: $scope.productLine.id}, {
+                    $state.go($state.current.name, {product: $scope.productLine.id}, {
                         reload: false,
                         inherit: true,
                         notify: false
-                    })
+                    });
                     $scope.getFilters($scope.technology.id, $scope.productLine.id);
                 }
             });
