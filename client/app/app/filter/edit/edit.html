@@ -162,7 +162,7 @@
                 </div>
                 <div class="flextable-item">
                     <div class="panel-toolbar">
-                        <a ui-sref="app.filter.properties"><span class="glyphicon glyphicon-plus"></span> Add</a>
+                        <a ui-sref="app.filters.edit.properties.add"><span class="glyphicon glyphicon-plus"></span> Add</a>
                     </div>
                 </div>
             </div>
@@ -191,6 +191,11 @@
                             <i class="glyphicon glyphicon-trash"></i>
                         </a>
                     </div>
+                </td>
+            </tr>
+            <tr ng-if="filter.propertyGroupFilter.propertyGroup.properties.length===0">
+                <td colspan="6" class="text-center">
+                    <strong class="h3 wrapper inline m-n">No properties found</strong>
                 </td>
             </tr>
         </table>

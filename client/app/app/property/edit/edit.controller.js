@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('ydmApp')
-    .controller('PropertyCtrl', function ($scope, $state, Repository, Message, NgTableParams, property, propertyModels) {
+    .controller('PropertyEditCtrl', function ($scope, $state, Repository, Message, NgTableParams, property, propertyModels, filter) {
         $scope.property = angular.copy(property);
         $scope.models = propertyModels;
 
@@ -19,7 +19,7 @@ angular.module('ydmApp')
                 form.$setUntouched();
             }
             $scope.property = angular.copy(property);
-        }
+        };
 
         $scope.tableParams = new NgTableParams({
             page: 1, // show first page

@@ -149,7 +149,7 @@ angular.module('ydmApp')
                 },
             })
             .state('app.filters.edit.properties.edit', {
-                url: '/{pId}',
+                url: '/{pId:int}',
                 ncyBreadcrumb: {
                     label: function ($stateParams) {
                         return $stateParams.pId
@@ -158,11 +158,11 @@ angular.module('ydmApp')
                 views: {
                     'content@app': {
                         templateUrl: 'app/app/property/edit/edit.html',
-                        controller: 'PropertyCtrl'
+                        controller: 'PropertyEditCtrl'
                     },
                     'models@app.filters.edit.properties.edit': {
                         templateUrl: 'app/app/models/list/list.html',
-                        controller: 'PropertyCtrl'
+                        controller: 'PropertyEditCtrl'
                     }
                 },
                 resolve: {
@@ -177,6 +177,18 @@ angular.module('ydmApp')
                         })
                     }
 
+                }
+            })
+            .state('app.filters.edit.properties.add', {
+                url: '/add',
+                ncyBreadcrumb: {
+                    label: 'Add'
+                },
+                views: {
+                    'content@app': {
+                        templateUrl: 'app/app/property/add/add.html',
+                        controller: 'PropertyAddCtrl'
+                    }
                 }
             })
             .state('app.filters.edit.properties.edit.models', {

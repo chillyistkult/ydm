@@ -22,7 +22,7 @@ angular.module('ydmApp')
                 deleteFilter: function(id) {
                     return Restangular.one('filters', id).customDELETE();
                 },
-                addFilter: function(data, params) {
+                addFilter: function(data) {
                     return Restangular.all('filters').customPOST(data);
                 },
                 getFilters: function(params) {
@@ -36,6 +36,9 @@ angular.module('ydmApp')
                 },
                 updateFilterProperty: function(id, data) {
                     return Restangular.one('filters/properties', id).customPUT(data);
+                },
+                addFilterProperty: function(id, data) {
+                    return Restangular.one('filters', id).one('properties').customPOST(data);
                 },
                 getFilterProperties: function(params) {
                     return Restangular.all('filters/properties').getList(params);
