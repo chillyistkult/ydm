@@ -39,6 +39,9 @@ angular.module('ydmApp', [
                     if(rejection.data.code === 20002) {
                         $location.path('/20002');
                     }
+                    if(rejection.data.code === 20009) {
+                        $location.path('/20009');
+                    }
                     //Message.logError(500);
                     //$location.path('/');
                 }

@@ -31,4 +31,12 @@ angular.module('ydmApp')
                     }
                 }
             })
+            .state('error.20009', {
+                url: '/20009',
+                views: {
+                    'content': {
+                        templateUrl: 'app/error/20009.html'
+                    }
+                }
+            })
     });
