@@ -6,7 +6,6 @@ angular.module('ydmApp')
 
         $scope.save = function(data) {
             Repository.addFilterProperty(filter.id, data).then(function(res) {
-                debugger;
                 $state.go('app.filters.edit.properties.edit', {pId: res.data.id}).then(function() {
                     Message.logSuccess('Property successfully saved!');
                 });

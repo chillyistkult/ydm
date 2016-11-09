@@ -6,6 +6,7 @@ angular.module('ydmApp')
             // Index = Dropindex
             // Obj = Dragged obj
             $scope.onDropComplete = function (index, obj, event) {
+                debugger;
                 if (obj) {
                     // Get destination object
                     var destObj = $scope.filters[index];
@@ -30,6 +31,21 @@ angular.module('ydmApp')
                     sourceObj[key] = targetObj[key];
                     targetObj[key] = temp;
                 }
+            }
+
+            $scope.onDropAddComplete = function (group, obj, event) {
+                /*
+                if (obj) {
+                    var sourceIndex = $scope.filters.indexOf(obj);
+                    var index = $scope.filters.length;
+                    for (var i = 0; i < $scope.filters.length; i++) {
+                        if ($scope.filters[i].group.id === group) {
+                            index = i;
+                        }
+                    }
+                    insert($scope.filters, obj, index + 1);
+                }
+                */
             }
 
             $scope.getTechnologies = function () {
@@ -60,7 +76,6 @@ angular.module('ydmApp')
                     $scope.filtersOriginal = angular.copy(res.data);
                     $scope.layout = $scope.getLayout(res.data);
                     $scope.filters = $scope.fillPlaceholder(res.data, $scope.layout);
-                    console.log($scope.filters);
                 })
             };
 
@@ -100,7 +115,11 @@ angular.module('ydmApp')
 
             var calcSpace = function (filter, columns) {
                 return columns == 2 ? 0 : filter.spaceLeft - 160;
-            }
+            };
+
+            var insert = function (collection, item, index) {
+                collection.splice(index, 0, item);
+            };
 
             $scope.fillPlaceholder = function (filters, layout) {
                 /* We are trying to transform traditional layout to our grid system.
@@ -118,21 +137,6 @@ angular.module('ydmApp')
                             i++;
                         }
                     }
-                }
-                /*
-                 angular.forEach(layout, function(key, value) {
-                 var columns = value < 2 ? 2 : 3;
-                 for(var i = 0; i < grouped)
-                 })
-
-                 for (var i = 0; i < columns - (filters.length % columns); i++) {
-                 insert(filters, {group: angular.copy(filters[i].group)}, i + 1);
-                 }
-                 */
-
-
-                function insert(collection, item, index) {
-                    collection.splice(index, 0, item);
                 }
 
                 return filters;

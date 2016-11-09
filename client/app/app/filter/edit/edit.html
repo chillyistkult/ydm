@@ -18,9 +18,9 @@
                 </div>
                 <div class="flextable-item">
                     <div class="panel-toolbar">
-                        <a ng-click="metaForm.$valid && update(filter)" ng-disabled="metaForm.$pristine"><span
+                        <a ng-click="metaForm.$valid && update(filter)" ng-class="{'disabled': metaForm.$pristine}"><span
                                 class="glyphicon glyphicon-floppy-disk"></span> Save</a>
-                        <a ng-click="reset()" ng-disabled="metaForm.$pristine"><span
+                        <a ng-click="reset()" ng-class="{'disabled': metaForm.$pristine}"><span
                                 class="glyphicon glyphicon-refresh"></span> Reset</a>
                     </div>
                 </div>
@@ -187,13 +187,15 @@
                         <a ui-sref="app.filters.edit.properties.edit({pId: property.id})">
                             <i class="glyphicon glyphicon-edit"></i>
                         </a>
+                        <!--
                         <a>
                             <i class="glyphicon glyphicon-trash"></i>
                         </a>
+                        -->
                     </div>
                 </td>
             </tr>
-            <tr ng-if="filter.propertyGroupFilter.propertyGroup.properties.length===0">
+            <tr ng-if="!filter.propertyGroupFilter.propertyGroup.properties || filter.propertyGroupFilter.propertyGroup.properties.length===0">
                 <td colspan="6" class="text-center">
                     <strong class="h3 wrapper inline m-n">No properties found</strong>
                 </td>

@@ -18,9 +18,9 @@
                 </div>
                 <div class="flextable-item">
                     <div class="panel-toolbar">
-                        <a ng-click="metaForm.$valid && save(filter)" ng-disabled="metaForm.$pristine"><span
+                        <a ng-click="metaForm.$valid && save(filter)" ng-class="{'disabled': metaForm.$pristine}"><span
                                 class="glyphicon glyphicon-floppy-disk"></span> Save</a>
-                        <a ng-click="reset()" ng-disabled="metaForm.$pristine"><span
+                        <a ng-click="reset()" ng-class="{'disabled': metaForm.$pristine}"><span
                                 class="glyphicon glyphicon-refresh"></span> Reset</a>
                     </div>
                 </div>

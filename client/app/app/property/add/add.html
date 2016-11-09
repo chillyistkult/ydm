@@ -21,7 +21,7 @@
                             Save
                         </a>
 
-                        <a ng-click="reset(metaForm)" ng-disabled="metaForm.$pristine">
+                        <a ng-click="reset(metaForm)" ng-class="{'disabled': metaForm.$pristine}">
                             <span class="glyphicon glyphicon-refresh"></span>
                             Reset
                         </a>

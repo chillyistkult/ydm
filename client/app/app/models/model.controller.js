@@ -1,10 +1,18 @@
 'use strict';
 
 angular.module('ydmApp')
-    .controller('ModelCtrl', function ($scope, Repository, NgTableParams, models, propertyModels, property) {
+    .controller('ModelCtrl', function ($scope, $state, Repository, Message, NgTableParams, models, propertyModels, property) {
         $scope.property = property;
         $scope.propertyModels = propertyModels;
         $scope.models = models;
+
+        $scope.update = function(data) {
+            Repository.updateModel(property.id, data.id, data).then(function(res) {
+                $state.reload().then(function() {
+                    Message.logSuccess('Model successfully added!');
+                });
+            });
+        };
 
         angular.forEach($scope.models, function(model) {
             var isFound = false;

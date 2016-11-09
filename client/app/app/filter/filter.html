@@ -55,7 +55,7 @@
                 <div ng-class="{'col-sm-6': layout[1] < 2 || layout[1] === undefined, 'col-sm-4': layout[1] >= 2}">
                     <div class="dragable dragable-add"
                          ng-drop="true"
-                         ng-drop-success="onDropAddComplete($index, $data, $event)"
+                         ng-drop-success="onDropAddComplete(1, $data, $event)"
                          ui-sref="app.filters.add({group: (filters | firstOfGroup : 1).group, productGroup: (filters | firstOfGroup : 1).productGroup})">
                     </div>
                 </div>
@@ -83,7 +83,7 @@
                 <div ng-class="{'col-sm-6': layout[2] < 2 || layout[2] === undefined, 'col-sm-4': layout[2] >= 2}">
                     <div class="dragable dragable-add"
                          ng-drop="true"
-                         ng-drop-success="onDropAddComplete($index, $data, $event)"
+                         ng-drop-success="onDropAddComplete(2, $data, $event)"
                          ui-sref="app.filters.add({group: (filters | firstOfGroup : 2).group, productGroup: (filters | firstOfGroup : 2).productGroup})"></div>
                 </div>
             </div>

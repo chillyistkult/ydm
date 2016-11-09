@@ -69,6 +69,9 @@ angular.module('ydmApp')
                 },
                 getModels: function(params) {
                     return Restangular.all('models').getList(params);
+                },
+                updateModel: function(pId, mId, data, params) {
+                    return Restangular.one('filters/properties', pId).one('models', mId).customPUT(data);
                 }
             };
         });

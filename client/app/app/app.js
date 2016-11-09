@@ -176,7 +176,6 @@ angular.module('ydmApp')
                             return res.data.plain();
                         })
                     }
-
                 }
             })
             .state('app.filters.edit.properties.add', {

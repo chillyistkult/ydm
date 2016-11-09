@@ -1,7 +1,16 @@
 <div class="panel panel-default">
     <div class="panel-heading">
-        <div class="panel-title inline">
-            Add Models
+        <div class="flextable">
+            <div class="flextable-item flextable-primary">
+                <div class="panel-title">
+                    Models
+                </div>
+            </div>
+            <div class="flextable-item">
+                <div class="panel-toolbar">
+                    <a ui-sref="app.filters.edit.properties.edit"><span class="glyphicon glyphicon-circle-arrow-left"></span> Back</a>
+                </div>
+            </div>
         </div>
     </div>
     <div class="panel-body">
@@ -12,7 +21,7 @@
                         <td data-title="'Included'" filter="{isIncluded: 'boolean'}" sortable="'isIncluded'">
                             <div class="checkbox custom-control custom-checkbox m-none">
                                 <label>
-                                    <input type="checkbox" ng-model="row.isIncluded">
+                                    <input type="checkbox" ng-click="update(row)" ng-model="row.isIncluded">
                                     <span class="custom-control-indicator"></span>
                                 </label>
                             </div>
